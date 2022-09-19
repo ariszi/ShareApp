@@ -5,7 +5,7 @@ In this documentation i m going to mentions some of the architectures, framework
 
 # Commit convention Overview
 The commits will be structured with the format of [Purpose]: [Description]
-The purpose will have a wide variaty on key works like feature, refactor, fix, tests, etc.
+The purpose will have a wide variety on key works like feature, refactor, fix, tests, etc.
 
 # Architecture Overview
 This project will use a reactive approach for its presentation layer. It will observe sources of the state, it will react on their changes, and it will create a state from the combination of those reaction(s). This approach can handle the projects' requirements.
