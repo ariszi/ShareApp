@@ -86,6 +86,8 @@ object Libs {
 
     const val materialComponentsLibrary = "com.google.android.material:material:${Versions.material_components}"
 
+    const val dataStoreAndroidLibrary = "androidx.datastore:datastore:${Versions.datastore}"
+
 
 }
 
@@ -104,6 +106,7 @@ object AppConfig {
     const val proguardDefaultFile = "proguard-android-optimize.txt"
 
 }
+
 object Versions {
 
     const val gradle = "7.3.0"
@@ -129,6 +132,7 @@ object Versions {
     const val android_test_runner = "1.4.0"
     const val espresso_core = "3.4.0"
     const val material_components = "1.8.0-alpha01"
+    const val datastore = "1.0.0"
 
 }
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7" />
+    <bytecodeTargetLevel target="11">
+      <module name="User_Onboarding.feature.login.main" target="11" />
+      <module name="User_Onboarding.feature.login.test" target="11" />
+      <module name="User_Onboarding.feature.onboarding.test" target="11" />
+      <module name="User_Onboarding.feature.splash-screen.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
