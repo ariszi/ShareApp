@@ -62,7 +62,7 @@ object Libs {
     const val junitJupiterEngineLibrary = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit}"
 
     const val androidxTestRunnerLibrary =
-        "androidx.test:runner:${Versions.android_test_runner}"
+        "androidx.test:runner:${Versions.androidx_test_version}"
 
     const val espressoCoreLibrary =
         "androidx.test.espresso:espresso-core:${Versions.espresso_core}"
@@ -87,6 +87,12 @@ object Libs {
     const val materialComponentsLibrary = "com.google.android.material:material:${Versions.material_components}"
 
     const val dataStoreAndroidLibrary = "androidx.datastore:datastore:${Versions.datastore}"
+
+    const val jUnitLibrary = "junit:junit:${Versions.junit4}"
+
+    const val androidxTestCoreLibrary = "androidx.test:core:${Versions.androidx_test_version}"
+
+    const val androidxTestExtLibrary = "androidx.test.ext:junit:${Versions.junit4}"
 
 
 }
@@ -129,7 +135,8 @@ object Versions {
     const val lottie = "5.0.3"
     const val assisted_inject_annotations_dagger = "0.8.1"
     const val junit = "5.8.1"
-    const val android_test_runner = "1.4.0"
+    const val junit4 = "4.13.2"
+    const val androidx_test_version = "1.4.0"
     const val espresso_core = "3.4.0"
     const val material_components = "1.8.0-alpha01"
     const val datastore = "1.0.0"

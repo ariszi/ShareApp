@@ -78,7 +78,6 @@ dependencies {
 
     testImplementation(Libs.junitJupiterLibrary)
     testRuntimeOnly(Libs.junitJupiterEngineLibrary)
-    androidTestImplementation(Libs.androidxTestRunnerLibrary)
 
 
 }
