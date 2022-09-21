@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("androidx.navigation.safeargs")
@@ -78,7 +79,6 @@ dependencies {
     testImplementation(Libs.junitJupiterLibrary)
     testRuntimeOnly(Libs.junitJupiterEngineLibrary)
     androidTestImplementation(Libs.androidxTestRunnerLibrary)
-    androidTestImplementation(Libs.espressoCoreLibrary)
 
 
 }
