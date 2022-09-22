@@ -70,23 +70,7 @@ object Libs {
     const val dataBindingLibrary =
         "androidx.databinding:databinding-runtime:${Versions.data_binding}"
 
-    const val androidToolsBuildGradleLibrary = "com.android.tools.build:gradle:${Versions.gradle}"
-
-    const val kotlinGradleGradlePluginLibrary =
-        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_version}"
-
-    const val apolloGradlePluginLibrary =
-        "com.apollographql.apollo3:apollo-gradle-plugin:${Versions.apollo}"
-
-    const val hiltAndroidGradlePluginLibrary =
-        "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_version}"
-
-    const val navSafeArgsGradlePluginLibrary =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
-
     const val materialComponentsLibrary = "com.google.android.material:material:${Versions.material_components}"
-
-    const val dataStoreAndroidLibrary = "androidx.datastore:datastore:${Versions.datastore}"
 
     const val jUnitLibrary = "junit:junit:${Versions.junit4}"
 
@@ -94,7 +78,21 @@ object Libs {
 
     const val androidxTestExtLibrary = "androidx.test.ext:junit:${Versions.junit4}"
 
+    const val dataStoreAndroidLibrary = "androidx.datastore:datastore-preferences:${Versions.datastore}"
 
+}
+
+object Plugin{
+    const val kotlinGradleGradlePluginLibrary =
+        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_version}"
+
+    const val hiltAndroidGradlePluginLibrary =
+        "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_version}"
+
+    const val navSafeArgsGradlePluginLibrary =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
+
+    const val androidToolsBuildGradleLibrary = "com.android.tools.build:gradle:${Versions.gradle}"
 }
 
 object AppConfig {
@@ -126,7 +124,6 @@ object Versions {
     const val lifecycle_viewmodel_savedstate = "2.5.1"
     const val annotation_jsr250_api = "1.0"
     const val okhttp = "4.9.3"
-    const val apollo = "3.6.0"
     const val coroutines = "1.6.4"
     const val constraint_layout = "2.1.4"
     const val recyclerview = "1.2.1"
