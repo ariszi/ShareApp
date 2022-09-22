@@ -1,4 +1,3 @@
-
 plugins {
     id("com.android.application")
     id("androidx.navigation.safeargs")
@@ -22,16 +21,16 @@ android {
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
-        viewBinding = true
         compose = true
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.compose_compiler
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
     buildTypes {
         getByName("release") {
@@ -63,9 +62,6 @@ dependencies {
     implementation(Libs.hiltAndroidLibrary)
     implementation(Libs.injectAssistedAnnotationDaggerLibrary)
     implementation(Libs.dataBindingLibrary)
-    implementation(Libs.navigationLibrary)
-    implementation(Libs.navigationKTXLibrary)
-    implementation(Libs.navigationComposeLibrary)
     implementation(Libs.appCompactLibrary)
     implementation(Libs.coreKTXLibrary)
     implementation(Libs.vmSaveStateLibrary)
@@ -77,16 +73,11 @@ dependencies {
     implementation(Libs.kotlinxCoroutinesAndroidLibrary)
     implementation(Libs.constraintLayoutLibrary)
     implementation(Libs.recycleViewLibrary)
-    implementation(Libs.glideLibrary)
     implementation(Libs.timberLibrary)
-    implementation(Libs.lottieLibrary)
-    implementation(Libs.materialComponentsLibrary)
-    implementation(Libs.composeMaterialLibrary)
-    debugImplementation(Libs.composeToolingLibrary)
-    debugImplementation(Libs.composeCompilerLibrary)
+
+    api(project(Module.coreUi))
 
     kapt(Libs.hiltKaptCompilerLibrary)
-
     testImplementation(Libs.junitJupiterLibrary)
     testRuntimeOnly(Libs.junitJupiterEngineLibrary)
 

@@ -84,6 +84,10 @@ object Libs {
 
     const val composeToolingLibrary = "androidx.compose.ui:ui-tooling:${Versions.compose}"
 
+    const val composeUiLibrary = "androidx.compose.ui:ui:${Versions.compose}"
+
+    const val composeFoundationLibrary = "androidx.compose.foundation:foundation:${Versions.compose}"
+
     const val composeCompilerLibrary = "androidx.compose.compiler:compiler:${Versions.compose_compiler}"
 
 }
@@ -160,10 +164,9 @@ object Module {
     const val featureOnboarding = ":feature:onboarding"
     const val featurePinLogin = ":feature:login"
     const val coreDesignSystem = ":core:design-system"
-    const val coreDatasource = ":core:datasource"
-    const val coreNavigation = ":core:navigation"
-    const val coreKotlinUtils = ":core:kotlin-utils"
-    const val testTesting = "test:testing"
+    const val coreDatasource = ":core:data-provider"
+    const val coreUi = ":core:ui"
+    const val testTesting = "core:testing"
 
 }
 
