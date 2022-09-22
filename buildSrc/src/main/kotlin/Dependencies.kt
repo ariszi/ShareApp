@@ -76,9 +76,15 @@ object Libs {
 
     const val androidxTestCoreLibrary = "androidx.test:core:${Versions.androidx_test_version}"
 
-    const val androidxTestExtLibrary = "androidx.test.ext:junit:${Versions.junit4}"
+    const val androidxTestExtLibrary = "androidx.test.ext:junit:${Versions.androidx_test_version}"
 
     const val dataStoreAndroidLibrary = "androidx.datastore:datastore-preferences:${Versions.datastore}"
+
+    const val composeMaterialLibrary = "androidx.compose.material:material:${Versions.compose_material}"
+
+    const val composeToolingLibrary = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+
+    const val composeCompilerLibrary = "androidx.compose.compiler:compiler:${Versions.compose_compiler}"
 
 }
 
@@ -93,6 +99,8 @@ object Plugin{
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
 
     const val androidToolsBuildGradleLibrary = "com.android.tools.build:gradle:${Versions.gradle}"
+
+    const val javapoetGradleLibrary = "com.squareup:javapoet:${Versions.javapoet}"
 }
 
 object AppConfig {
@@ -114,7 +122,7 @@ object AppConfig {
 object Versions {
 
     const val gradle = "7.3.0"
-    const val kotlin_version = "1.7.0"
+    const val kotlin_version = "1.7.10"
     const val hilt_version = "2.43.2"
     const val nav_version = "2.5.2"
     const val data_binding = "7.3.0"
@@ -137,6 +145,10 @@ object Versions {
     const val espresso_core = "3.4.0"
     const val material_components = "1.8.0-alpha01"
     const val datastore = "1.0.0"
+    const val compose_material = "1.3.0-beta03"
+    const val compose_compiler = "1.3.1"
+    const val javapoet = "1.13.0"
+    const val compose = "1.2.1"
 
 }
 

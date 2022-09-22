@@ -4,7 +4,7 @@ plugins {
     id("androidx.navigation.safeargs")
     id("dagger.hilt.android.plugin")
     kotlin("android")
-    kotlin("kapt")
+    id("kotlin-kapt")
 }
 
 android {
@@ -27,6 +27,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.compose_compiler
     }
     buildTypes {
         getByName("release") {
@@ -43,9 +48,12 @@ android {
     }
 }
 
-
 kapt {
     correctErrorTypes = true
+}
+
+hilt {
+    enableExperimentalClasspathAggregation = true
 }
 
 
@@ -73,6 +81,9 @@ dependencies {
     implementation(Libs.timberLibrary)
     implementation(Libs.lottieLibrary)
     implementation(Libs.materialComponentsLibrary)
+    implementation(Libs.composeMaterialLibrary)
+    debugImplementation(Libs.composeToolingLibrary)
+    debugImplementation(Libs.composeCompilerLibrary)
 
     kapt(Libs.hiltKaptCompilerLibrary)
 
