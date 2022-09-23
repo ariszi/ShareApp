@@ -75,7 +75,10 @@ dependencies {
     implementation(Libs.recycleViewLibrary)
     implementation(Libs.timberLibrary)
 
-    api(project(Module.coreUi))
+    implementation(project(Module.featureOnboarding))
+    implementation(project(Module.featurePinLogin))
+    implementation(project(Module.featureMainScreen))
+    implementation(project(Module.coreUi))
 
     kapt(Libs.hiltKaptCompilerLibrary)
     testImplementation(Libs.junitJupiterLibrary)

@@ -15,10 +15,10 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/data-provider" />
             <option value="$PROJECT_DIR$/core/design-system" />
-            <option value="$PROJECT_DIR$/core/navigation" />
             <option value="$PROJECT_DIR$/core/testing" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/feature-shared" />
             <option value="$PROJECT_DIR$/feature/main-screen" />
             <option value="$PROJECT_DIR$/feature/onboarding" />
             <option value="$PROJECT_DIR$/feature/pin" />

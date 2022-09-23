@@ -159,10 +159,11 @@ object Versions {
 object Module {
 
     const val app = ":app"
-    const val featureShared = ":feature:shared"
     const val featureSplashScreen = ":feature:splash-screen"
+    const val featureShared = ":feature:feature-shared"
     const val featureOnboarding = ":feature:onboarding"
-    const val featurePinLogin = ":feature:login"
+    const val featurePinLogin = ":feature:pin"
+    const val featureMainScreen = ":feature:main-screen"
     const val coreDesignSystem = ":core:design-system"
     const val coreDatasource = ":core:data-provider"
     const val coreUi = ":core:ui"

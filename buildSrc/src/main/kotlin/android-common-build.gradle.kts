@@ -4,7 +4,6 @@ plugins {
 }
 
 android {
-    namespace = AppConfig.appId
     compileSdk = AppConfig.compileSdk
     buildToolsVersion = AppConfig.buildToolsVersion
 
