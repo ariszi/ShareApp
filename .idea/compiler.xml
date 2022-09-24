@@ -5,6 +5,7 @@
       <module name="User_Onboarding.feature.login.main" target="11" />
       <module name="User_Onboarding.feature.login.test" target="11" />
       <module name="User_Onboarding.feature.onboarding.test" target="11" />
+      <module name="User_Onboarding.feature.splash-screen.main" target="11" />
       <module name="User_Onboarding.feature.splash-screen.test" target="11" />
     </bytecodeTargetLevel>
   </component>

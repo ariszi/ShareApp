@@ -22,7 +22,6 @@
             <option value="$PROJECT_DIR$/feature/main-screen" />
             <option value="$PROJECT_DIR$/feature/onboarding" />
             <option value="$PROJECT_DIR$/feature/pin" />
-            <option value="$PROJECT_DIR$/feature/splash-screen" />
           </set>
         </option>
       </GradleProjectSettings>
