@@ -1,38 +1,37 @@
 package zi.aris.presentation
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import zi.aris.useronboarding.R
 
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(R.layout.main_activity) {
+
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerObservers()
     }
 
-    @Preview
-    @Composable
-    fun MessageCard(name: String = "hello") {
-        Row {
-            Text(modifier = Modifier.padding(all = 8.dp), text = "Fucking hell")
-            Column {
-                Text(modifier = Modifier.padding(start = 16.dp, bottom = 16.dp), text = "One")
-                Text(text = "Two")
-            }
+
+    private fun registerObservers() {
+        lifecycleScope.launch { viewModel.state.collect { applyState(it) } }
+    }
+
+    private fun applyState(state: SplashScreenContract.SplashScreenState) {
+
+        val navId = when (state.navChooser) {
+            is SplashScreenContract.UserNavOptions.NavigateToPinSignIn -> zi.aris.pin.R.navigation.pin_nav_graph
+            else -> zi.aris.onboarding.R.navigation.onboarding_nav_graph
         }
-    }
 
-    @Preview
-    @Composable
-    fun PreviewMessageCard(name: String = "hello again") {
-        MessageCard("Android")
+        val hostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        hostFragment?.findNavController()?.setGraph(navId)
     }
-
 }
