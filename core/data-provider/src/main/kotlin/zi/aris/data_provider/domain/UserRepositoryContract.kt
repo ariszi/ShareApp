@@ -2,7 +2,8 @@ package zi.aris.data_provider.domain
 
 import kotlinx.coroutines.flow.Flow
 
-interface UserOnboardingDataSourceContract {
+
+interface UserRepositoryContract {
 
     suspend fun saveUsersEmailAndPassword(email: String, password: String)
 
@@ -13,6 +14,8 @@ interface UserOnboardingDataSourceContract {
     suspend fun confirmUsersPin(pin: String)
 
     suspend fun validateUsersPin(pin: String): Flow<Result<Unit>>
+
+    suspend fun isUserRegistered(): Boolean
 
     suspend fun cleanUserData()
 

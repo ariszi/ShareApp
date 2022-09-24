@@ -5,15 +5,13 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
 import zi.aris.data_provider.domain.*
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class UserOnboardingDataSource @Inject constructor(private val dataStore: DataStore<Preferences>) :
-    UserOnboardingDataSourceContract {
 
+class UserRepository @Inject constructor(private val dataStore: DataStore<Preferences>) :
+    UserRepositoryContract {
 
     companion object {
 
@@ -76,6 +74,10 @@ class UserOnboardingDataSource @Inject constructor(private val dataStore: DataSt
             dataStore.data.map { preferences ->
                 Result.Success(User(email = preferences[USER_EMAIL] ?: "", password = preferences[USER_EMAIL] ?: ""))
             }.catch { cause: Throwable -> cause.message?.let { ErrorWithMessage(it) } ?: GenericError }
+
+    override suspend fun isUserRegistered(): Boolean {
+        return dataStore.data.first()[USER_PIN_CONFIRMED] ?: false
+    }
 
 
     override val usersInfo: Flow<Result<User>>

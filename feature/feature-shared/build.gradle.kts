@@ -1,6 +1,10 @@
 plugins{
     id("android-common-build")
 }
+
+
+
 dependencies{
-    implementation(project(Module.coreUi))
+    api(project(Module.coreUi))
+    api(Libs.fragmentKTXLibrary)
 }

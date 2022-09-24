@@ -52,7 +52,7 @@ kapt {
 }
 
 hilt {
-    enableExperimentalClasspathAggregation = true
+    enableAggregatingTask = true
 }
 
 
@@ -68,17 +68,18 @@ dependencies {
     implementation(Libs.lifecycleRuntimeKTXLibrary)
     implementation(Libs.jsrLibrary)
     implementation(Libs.okHttpLibrary)
-    implementation(Libs.fragmentKTXLibrary)
     implementation(Libs.kotlinxCoroutinesCoreLibrary)
     implementation(Libs.kotlinxCoroutinesAndroidLibrary)
     implementation(Libs.constraintLayoutLibrary)
     implementation(Libs.recycleViewLibrary)
     implementation(Libs.timberLibrary)
+    implementation(Libs.hiltFragmentNavigationLibrary)
 
     implementation(project(Module.featureOnboarding))
     implementation(project(Module.featurePinLogin))
     implementation(project(Module.featureMainScreen))
     implementation(project(Module.coreUi))
+    implementation(project(Module.coreDatasource))
 
     kapt(Libs.hiltKaptCompilerLibrary)
     testImplementation(Libs.junitJupiterLibrary)

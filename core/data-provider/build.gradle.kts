@@ -4,13 +4,9 @@ plugins {
     kotlin("kapt")
 }
 
-
-hilt {
-    enableExperimentalClasspathAggregation = true
-}
-
 dependencies {
     implementation(Libs.dataStoreAndroidLibrary)
     implementation(Libs.hiltAndroidLibrary)
-    implementation(Libs.hiltKaptCompilerLibrary)
+    kapt(Libs.hiltKaptCompilerLibrary)
+    implementation(Libs.injectAssistedAnnotationDaggerLibrary)
 }

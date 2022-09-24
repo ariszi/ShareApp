@@ -54,6 +54,8 @@ object Libs {
 
     const val hiltAndroidLibrary = "com.google.dagger:hilt-android:${Versions.hilt_version}"
 
+    const val hiltFragmentNavigationLibrary = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_fragment_nav}"
+
     const val hiltKaptCompilerLibrary =
         "com.google.dagger:hilt-android-compiler:${Versions.hilt_version}"
 
@@ -133,6 +135,7 @@ object Versions {
     const val appcompat = "1.4.1"
     const val core_ktx = "1.9.0"
     const val fragment = "1.5.2"
+    const val hilt_fragment_nav = "1.0.0"
     const val lifecycle_viewmodel_savedstate = "2.5.1"
     const val annotation_jsr250_api = "1.0"
     const val okhttp = "4.9.3"
@@ -159,7 +162,6 @@ object Versions {
 object Module {
 
     const val app = ":app"
-    const val featureSplashScreen = ":feature:splash-screen"
     const val featureShared = ":feature:feature-shared"
     const val featureOnboarding = ":feature:onboarding"
     const val featurePinLogin = ":feature:pin"
