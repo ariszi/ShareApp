@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">User Onboarding</string>
+    <string name="t_and_c_title">Terms and conditions</string>
+    <string name="t_and_c">Your access to and use of Lorem Ipsum (the app) is subject exclusively to these Terms
+        and Conditions. You will not use the app for any purpose that is unlawful or prohibited by these Terms and
+        Conditions. By using the app you are fully accepting the terms, conditions and disclaimers contained in this notice.
+        If you do not accept these Terms and Conditions you must immediately stop using the app.</string>
+    <string name="welcome">Welcome</string>
+    <string name="next">Next</string>
+    <string name="previous">Back</string>
+    <string name="prompt_email_mandatory">Email</string>
+    <string name="prompt_password_mandatory">Password</string>
+    <string name="mandatory_fields_disclaimer">All fields are mandatory</string>
+
+    <string name="welcome_screen_description">Spicy jalapeno bacon ipsum dolor amet consectetur swine quis mollit.
+        Pork belly ball tip leberkas jowl, culpa pariatur tongue turkey.
+        Id tenderloin capicola, meatball jerky turducken veniam aliqua.
+        Meatball nisi culpa pig bresaola ball tip duis mollit t-bone corned beef qui.</string>
+</resources>
