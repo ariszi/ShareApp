@@ -6,6 +6,33 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="zi.aris.onboarding.presentation.WelcomeFragment"
-        android:label="WelcomeFragment" />
+        android:name="zi.aris.onboarding.presentation.fragments.WelcomeFragment"
+        android:label="welcome_fragment">
+        <action
+            android:id="@+id/action_welcomeFragment_to_tcFragment"
+            app:destination="@id/tcFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/credentialsFragment"
+        android:name="zi.aris.onboarding.presentation.fragments.CredentialsFragment"
+        android:label="credentials_fragment">
+        <action
+            android:id="@+id/action_credentialsFragment_to_tcFragment"
+            app:destination="@id/tcFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tcFragment"
+        android:name="zi.aris.onboarding.presentation.fragments.TCFragment"
+        android:label="tc_fragment">
+        <action
+            android:id="@+id/action_tcFragment_to_credentialsFragment"
+            app:destination="@id/credentialsFragment" />
+        <action
+            android:id="@+id/action_tcFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+
+
 </navigation>

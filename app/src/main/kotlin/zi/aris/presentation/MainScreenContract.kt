@@ -3,13 +3,13 @@ package zi.aris.presentation
 import zi.aris.ui.base_contracts.IntentAction
 import zi.aris.ui.base_contracts.State
 
-class SplashScreenContract {
+class MainScreenContract {
 
-    sealed class SplashScreenEvent : IntentAction {
-        object UserLaunchedApp : SplashScreenEvent()
+    sealed class MainScreenEvent : IntentAction {
+        object UserLaunchedApp : MainScreenEvent()
     }
 
-    data class SplashScreenState(
+    data class MainScreenState(
         val loading: Boolean = false,
         val navChooser: UserNavOptions = UserNavOptions.Idle,
         val genericError: String? = null

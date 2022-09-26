@@ -12,8 +12,8 @@ class MainViewModel @Inject constructor(private val userNavChooserUsecase: UserN
 
     private val loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    private val navigation: MutableStateFlow<SplashScreenContract.UserNavOptions> =
-        MutableStateFlow(SplashScreenContract.UserNavOptions.Idle)
+    private val navigation: MutableStateFlow<MainScreenContract.UserNavOptions> =
+        MutableStateFlow(MainScreenContract.UserNavOptions.Idle)
 
     private val navChooser =
         flow {
@@ -24,12 +24,12 @@ class MainViewModel @Inject constructor(private val userNavChooserUsecase: UserN
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000L),
-                initialValue = SplashScreenContract.UserNavOptions.Idle
+                initialValue = MainScreenContract.UserNavOptions.Idle
             )
 
-    val state: StateFlow<SplashScreenContract.SplashScreenState> =
+    val state: StateFlow<MainScreenContract.MainScreenState> =
         combine(loading, navigation) { loading, navigation ->
-            SplashScreenContract.SplashScreenState(
+            MainScreenContract.MainScreenState(
                 loading,
                 navigation
             )
@@ -37,16 +37,16 @@ class MainViewModel @Inject constructor(private val userNavChooserUsecase: UserN
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
-                initialValue = SplashScreenContract.SplashScreenState()
+                initialValue = MainScreenContract.MainScreenState()
             )
 
     private fun navigateUser() {
         navigation.update { navChooser.value }
     }
 
-    fun consumeEvent(event: SplashScreenContract.SplashScreenEvent) {
+    fun consumeEvent(event: MainScreenContract.MainScreenEvent) {
         when (event) {
-            is SplashScreenContract.SplashScreenEvent.UserLaunchedApp -> {
+            is MainScreenContract.MainScreenEvent.UserLaunchedApp -> {
                 navigateUser()
             }
         }

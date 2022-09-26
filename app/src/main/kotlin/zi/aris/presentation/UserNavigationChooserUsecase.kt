@@ -5,10 +5,10 @@ import javax.inject.Inject
 
 class UserNavigationChooserUsecase @Inject constructor(private val userData: UserRepositoryContract) {
 
-    suspend fun invoke(): SplashScreenContract.UserNavOptions {
+    suspend fun invoke(): MainScreenContract.UserNavOptions {
         return when (userData.isUserRegistered()) {
-            true -> SplashScreenContract.UserNavOptions.NavigateToPinSignIn
-            false -> SplashScreenContract.UserNavOptions.NavigateToOnboarding
+            true -> MainScreenContract.UserNavOptions.NavigateToPinSignIn
+            false -> MainScreenContract.UserNavOptions.NavigateToOnboarding
         }
     }
 }

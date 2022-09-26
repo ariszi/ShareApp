@@ -21,13 +21,13 @@ class MainActivity : AppCompatActivity(R.layout.main_activity) {
 
 
     private fun registerObservers() {
-        lifecycleScope.launch { viewModel.state.collect { applyState(it) } }
+        lifecycleScope.launch { viewModel.state.collect { navigateUser(it.navChooser) } }
     }
 
-    private fun applyState(state: SplashScreenContract.SplashScreenState) {
+    private fun navigateUser(navState: MainScreenContract.UserNavOptions) {
 
-        val navId = when (state.navChooser) {
-            is SplashScreenContract.UserNavOptions.NavigateToPinSignIn -> zi.aris.pin.R.navigation.pin_nav_graph
+        val navId = when (navState) {
+            is MainScreenContract.UserNavOptions.NavigateToPinSignIn -> zi.aris.pin.R.navigation.pin_nav_graph
             else -> zi.aris.onboarding.R.navigation.onboarding_nav_graph
         }
 
