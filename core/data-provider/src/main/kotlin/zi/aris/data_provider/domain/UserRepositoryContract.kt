@@ -19,8 +19,8 @@ interface UserRepositoryContract {
 
     suspend fun cleanUserData()
 
-    val usersCredentials: Flow<Result<User>>
+    suspend fun usersCredentials(): Flow<Result<User>>
 
-    val usersInfo: Flow<Result<User>>
+    suspend fun usersInfo(): Flow<Result<User>>
 
 }
