@@ -6,46 +6,41 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import zi.aris.onboarding.presentation.state.OnboardingStateContract
+import zi.aris.onboarding.presentation.state.UserDataUsecase
+import javax.inject.Inject
 
 @HiltViewModel
-class OnboardingViewModel /*@Inject constructor(private val userDataUsecase: UserDataUsecase) */ : ViewModel() {
+class OnboardingViewModel @Inject constructor(private val userDataUsecase: UserDataUsecase) : ViewModel() {
 
     private val loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    private val isNextStepAvailable: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     private val navigation: MutableStateFlow<OnboardingStateContract.UserOnboardingNavigation> =
         MutableStateFlow(OnboardingStateContract.UserOnboardingNavigation.Idle)
 
-    //    private val navChooser =
-//        flow {
-//            emit(userDataUsecase.invoke())
-//        }
-//            .onStart { loading.update { true } }
-//            .onEach { loading.update { false } }
-//            .stateIn(
-//                scope = viewModelScope,
-//                started = SharingStarted.WhileSubscribed(5000L),
-//                initialValue = OnboardingStateContract.UserNavOptions.Idle
-//            )
-    private fun getUserData() {
+    private val userInfo: MutableStateFlow<OnboardingStateContract.UserInfo> =
+        MutableStateFlow(OnboardingStateContract.UserInfo.Idle)
 
-
-//        flow {
-//            emit(userDataUsecase.invoke())
-//        }
-//            .onStart { loading.update { true } }
-//            .onEach { loading.update { false } }
-//            .stateIn(
-//                scope = viewModelScope,
-//                started = SharingStarted.WhileSubscribed(5000L),
-//                initialValue = OnboardingStateContract.UserNavOptions.Idle
-//            )
-    }
+    private val userCredential =
+        flow {
+            emit(userDataUsecase.getUserCredentials())
+        }
+            .onStart { loading.update { true } }
+            .onEach { loading.update { false } }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5000L),
+                initialValue = OnboardingStateContract.UserInfo.Idle
+            )
 
     val state: StateFlow<OnboardingStateContract.OnboardingScreenState> =
-        combine(loading, navigation) { loading, navigation ->
+        combine(loading, isNextStepAvailable, navigation, userInfo) { loading, isNextStepAvailable, navigation, userInfo ->
             OnboardingStateContract.OnboardingScreenState(
                 loading,
-                navigation
+                isNextStepAvailable,
+                navigation,
+                userInfo
             )
         }.flowOn(Dispatchers.Default)
             .stateIn(
@@ -54,6 +49,10 @@ class OnboardingViewModel /*@Inject constructor(private val userDataUsecase: Use
                 initialValue = OnboardingStateContract.OnboardingScreenState()
             )
 
+    private fun retrieveUsersCredential() {
+        userInfo.update { userCredential.value }
+    }
+
 
     fun consumeEvent(event: OnboardingStateContract.OnboardingEvent) {
         when (event) {
@@ -61,7 +60,7 @@ class OnboardingViewModel /*@Inject constructor(private val userDataUsecase: Use
                 navigation.update { OnboardingStateContract.UserOnboardingNavigation.NavigateToStepTC }
             }
             OnboardingStateContract.OnboardingEvent.StepTCCompleted -> {
-                //navigation.update { OnboardingStateContract.UserOnboardingNavigation.NavigateToStepTC }
+                navigation.update { OnboardingStateContract.UserOnboardingNavigation.NavigateToStepUserCredentials }
             }
             is OnboardingStateContract.OnboardingEvent.StepUserCredentialCompleted -> {
                 TODO()
@@ -76,19 +75,28 @@ class OnboardingViewModel /*@Inject constructor(private val userDataUsecase: Use
                 TODO()
             }
             is OnboardingStateContract.OnboardingEvent.GoBackToStepTC -> {
+                navigation.update { OnboardingStateContract.UserOnboardingNavigation.NavigateToStepTC }
+            }
+            is OnboardingStateContract.OnboardingEvent.GoBackToStepUserCredential -> {
                 TODO()
             }
-            is  OnboardingStateContract.OnboardingEvent.GoBackToStepUserCredential -> {
+            is OnboardingStateContract.OnboardingEvent.GoBackToStepUserInfo -> {
                 TODO()
             }
-            is  OnboardingStateContract.OnboardingEvent.GoBackToStepUserInfo -> {
+            is OnboardingStateContract.OnboardingEvent.GoBackToStepUserPin -> {
                 TODO()
             }
-            is  OnboardingStateContract.OnboardingEvent.GoBackToStepUserPin -> {
-                TODO()
-            }
-            is  OnboardingStateContract.OnboardingEvent.GoBackToStepWelcome -> {
+            is OnboardingStateContract.OnboardingEvent.GoBackToStepWelcome -> {
                 navigation.update { OnboardingStateContract.UserOnboardingNavigation.NavigateToStepWelcome }
+            }
+            is OnboardingStateContract.OnboardingEvent.UserOnCredentialsScreen -> {
+                retrieveUsersCredential()
+            }
+            is OnboardingStateContract.OnboardingEvent.NextStepAvailable -> {
+                isNextStepAvailable.update { true }
+            }
+            is OnboardingStateContract.OnboardingEvent.NextStepUnavailable -> {
+                isNextStepAvailable.update { false }
             }
         }
     }

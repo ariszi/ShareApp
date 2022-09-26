@@ -6,6 +6,7 @@
         Conditions. By using the app you are fully accepting the terms, conditions and disclaimers contained in this notice.
         If you do not accept these Terms and Conditions you must immediately stop using the app.</string>
     <string name="welcome">Welcome</string>
+    <string name="credentials_title">Credentials</string>
     <string name="next">Next</string>
     <string name="previous">Back</string>
     <string name="prompt_email_mandatory">Email</string>

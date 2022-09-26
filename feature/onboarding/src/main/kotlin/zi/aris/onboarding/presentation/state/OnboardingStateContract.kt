@@ -17,10 +17,14 @@ class OnboardingStateContract {
         data class StepUserPinCompleted(val pin: String) : OnboardingEvent()
         object GoBackToStepUserPin : OnboardingEvent()
         data class StepUserPinConfirmationCompleted(val pin: String) : OnboardingEvent()
+        object UserOnCredentialsScreen : OnboardingEvent()
+        object NextStepAvailable : OnboardingEvent()
+        object NextStepUnavailable : OnboardingEvent()
     }
 
     data class OnboardingScreenState(
         val loading: Boolean = false,
+        val isNextStepAvailable: Boolean = false,
         val navigation: UserOnboardingNavigation = UserOnboardingNavigation.Idle,
         val displayUserInfo: UserInfo = UserInfo.Idle,
         val genericError: String? = null
@@ -30,10 +34,12 @@ class OnboardingStateContract {
         object Idle : UserOnboardingNavigation()
         object NavigateToStepTC : UserOnboardingNavigation()
         object NavigateToStepWelcome : UserOnboardingNavigation()
-        data class NavigateToStepUserCredentials(val email: String, val password: String) : UserOnboardingNavigation()
+        object NavigateToStepUserCredentials : UserOnboardingNavigation()
+        object NavigateToStepUserInfo : UserOnboardingNavigation()
     }
 
     sealed class UserInfo {
         object Idle : UserInfo()
+        data class UserCredentials(val email: String, val password: String) : UserInfo()
     }
 }

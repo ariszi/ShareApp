@@ -19,8 +19,8 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
 
     private val viewModel: OnboardingViewModel by viewModels()
 
-    lateinit var next: TextView
-    lateinit var previous: TextView
+    private lateinit var next: TextView
+    private lateinit var previous: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,6 +28,11 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
         next = binding.next
         previous = binding.previous
 
+        registerStateSubscriber()
+        setupViewListeners()
+    }
+
+    private fun setupViewListeners() {
         next.setOnClickListener {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.StepTCCompleted)
         }
@@ -35,7 +40,6 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepWelcome)
         }
 
-        registerStateSubscriber()
     }
 
     private fun registerStateSubscriber() {
@@ -44,8 +48,6 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
 
     private fun applyState(viewState: OnboardingStateContract.OnboardingScreenState) {
         navigate(viewState.navigation)
-//        insertUserInfo(viewState.displayUserInfo)
-//        renderLoading(viewState.loading)
     }
 
     private fun navigate(navChooser: OnboardingStateContract.UserOnboardingNavigation) {
