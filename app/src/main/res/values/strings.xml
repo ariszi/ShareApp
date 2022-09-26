@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">User Onboarding</string>
-    <string name="welcome">Welcome</string>
-    <string name="welcome_screen_description">This is the beginning of your on-boarding in this app. Go ahead, see whats next.</string>
-    <string name="t_and_c_title">Terms and conditions</string>
-    <string name="t_and_c">Huge bacon ipsum here.</string>
-</resources>
