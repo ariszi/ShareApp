@@ -92,9 +92,11 @@ object Libs {
 
     const val composeCompilerLibrary = "androidx.compose.compiler:compiler:${Versions.compose_compiler}"
 
+    const val materialLibrary = "com.google.android.material:material:${Versions.material}"
+
 }
 
-object Plugin{
+object Plugin {
     const val kotlinGradleGradlePluginLibrary =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_version}"
 
@@ -153,6 +155,7 @@ object Versions {
     const val material_components = "1.8.0-alpha01"
     const val datastore = "1.0.0"
     const val compose_material = "1.3.0-beta03"
+    const val material = "1.6.1"
     const val compose_compiler = "1.3.1"
     const val javapoet = "1.13.0"
     const val compose = "1.2.1"
@@ -165,7 +168,7 @@ object Module {
     const val featureShared = ":feature:feature-shared"
     const val featureOnboarding = ":feature:onboarding"
     const val featurePinLogin = ":feature:pin"
-    const val featureMainScreen = ":feature:main-screen"
+    const val featureMainScreen = ":feature:user"
     const val coreDesignSystem = ":core:design-system"
     const val coreDatasource = ":core:data-provider"
     const val coreUi = ":core:ui"

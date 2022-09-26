@@ -2,8 +2,8 @@ plugins {
     id("com.android.application")
     id("androidx.navigation.safeargs")
     id("dagger.hilt.android.plugin")
-    kotlin("android")
     id("kotlin-kapt")
+    kotlin("android")
 }
 
 android {
@@ -55,13 +55,10 @@ hilt {
     enableAggregatingTask = true
 }
 
-
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Libs.hiltAndroidLibrary)
     implementation(Libs.injectAssistedAnnotationDaggerLibrary)
-    implementation(Libs.dataBindingLibrary)
     implementation(Libs.appCompactLibrary)
     implementation(Libs.coreKTXLibrary)
     implementation(Libs.vmSaveStateLibrary)
@@ -73,6 +70,7 @@ dependencies {
     implementation(Libs.constraintLayoutLibrary)
     implementation(Libs.recycleViewLibrary)
     implementation(Libs.timberLibrary)
+    implementation(Libs.hiltAndroidLibrary)
     implementation(Libs.hiltFragmentNavigationLibrary)
 
     implementation(project(Module.featureOnboarding))

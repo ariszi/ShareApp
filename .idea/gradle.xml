@@ -19,9 +19,9 @@
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/feature-shared" />
-            <option value="$PROJECT_DIR$/feature/main-screen" />
             <option value="$PROJECT_DIR$/feature/onboarding" />
             <option value="$PROJECT_DIR$/feature/pin" />
+            <option value="$PROJECT_DIR$/feature/user" />
           </set>
         </option>
       </GradleProjectSettings>

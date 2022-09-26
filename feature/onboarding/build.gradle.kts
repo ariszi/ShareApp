@@ -1,6 +1,15 @@
 plugins{
     id("android-common-build")
+    id("androidx.navigation.safeargs")
 }
+
+android {
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
 dependencies{
-    implementation(project(Module.featureShared))
+    api(project(Module.featureShared))
 }
