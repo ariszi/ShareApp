@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
+
+    <style name="Description">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:color">@color/grey_genre</item>
+
+    </style>
+
+    <style name="Heading">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:color">@color/purple_700</item>
+    </style>
+
+    <style name="HeadingSmall">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:color">@color/purple_500</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:color">@color/purple_200</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:textSize">18sp</item>
+        <item name="android:color">@color/teal_700</item>
+    </style>
+</resources>
