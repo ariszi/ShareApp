@@ -5,47 +5,60 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/credentials_title"
+        android:id="@+id/info_title"
         style="@style/Heading"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/spacing_5x"
         android:gravity="center"
-        android:text="@string/credentials_title"
+        android:text="@string/info_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/email_et"
+        android:id="@+id/name_et"
         style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_3x"
         android:layout_marginTop="@dimen/spacing_3x"
         android:layout_marginEnd="@dimen/spacing_3x"
-        android:hint="@string/prompt_email_mandatory"
+        android:hint="@string/prompt_name_mandatory"
         android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/credentials_title" />
+        app:layout_constraintTop_toBottomOf="@+id/info_title" />
 
     <EditText
-        android:id="@+id/password_et"
+        android:id="@+id/lastName_et"
         style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_3x"
         android:layout_marginTop="@dimen/spacing_3x"
         android:layout_marginEnd="@dimen/spacing_3x"
-        android:hint="@string/prompt_password_mandatory"
-        android:inputType="textPassword"
+        android:hint="@string/prompt_last_name_mandatory"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_et" />
+        app:layout_constraintTop_toBottomOf="@+id/name_et" />
+
+    <EditText
+        android:id="@+id/phone_et"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_3x"
+        android:layout_marginTop="@dimen/spacing_3x"
+        android:layout_marginEnd="@dimen/spacing_3x"
+        android:inputType="number"
+        android:hint="@string/prompt_phone_mandatory"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastName_et" />
 
     <TextView
         android:id="@+id/disclaimer_tv"
@@ -57,7 +70,7 @@
         android:layout_marginEnd="@dimen/spacing_3x"
         android:text="@string/mandatory_fields_disclaimer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_et" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_et" />
 
 
     <TextView

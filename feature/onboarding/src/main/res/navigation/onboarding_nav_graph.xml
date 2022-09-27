@@ -7,18 +7,10 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="zi.aris.onboarding.presentation.fragments.WelcomeFragment"
+        app:popUpTo="@+id/login_nav"
         android:label="welcome_fragment">
         <action
             android:id="@+id/action_welcomeFragment_to_tcFragment"
-            app:destination="@id/tcFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/credentialsFragment"
-        android:name="zi.aris.onboarding.presentation.fragments.CredentialsFragment"
-        android:label="credentials_fragment">
-        <action
-            android:id="@+id/action_credentialsFragment_to_tcFragment"
             app:destination="@id/tcFragment" />
     </fragment>
 
@@ -32,6 +24,51 @@
         <action
             android:id="@+id/action_tcFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/credentialsFragment"
+        android:name="zi.aris.onboarding.presentation.fragments.CredentialsFragment"
+        android:label="credentials_fragment">
+        <action
+            android:id="@+id/action_credentialsFragment_to_tcFragment"
+            app:destination="@id/tcFragment" />
+        <action
+            android:id="@+id/action_credentialsFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="zi.aris.onboarding.presentation.fragments.InfoFragment"
+        android:label="info_fragment">
+        <action
+            android:id="@+id/action_infoFragment_to_credentialsFragment"
+            app:destination="@id/credentialsFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pinFragment"
+        android:name="zi.aris.onboarding.presentation.fragments.PinFragment"
+        android:label="pin_fragment">
+        <action
+            android:id="@+id/action_pinFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_pinFragment_to_pinConfirmationFragment"
+            app:destination="@id/pinConfirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pinConfirmationFragment"
+        android:name="zi.aris.onboarding.presentation.fragments.PinConfirmationFragment"
+        android:label="pin_confirmation_fragment">
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
     </fragment>
 
 

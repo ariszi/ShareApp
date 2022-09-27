@@ -1,7 +1,6 @@
 package zi.aris.onboarding.presentation.fragments
 
 import android.os.Bundle
-import android.text.Editable.Factory.getInstance
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -12,60 +11,56 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import zi.aris.feature_shared.textObserver
-import zi.aris.onboarding.R
 import zi.aris.onboarding.R.layout
-import zi.aris.onboarding.databinding.CredentialsFragmentBinding
+import zi.aris.onboarding.databinding.PinFragmentBinding
 import zi.aris.onboarding.presentation.state.OnboardingStateContract
 import zi.aris.onboarding.presentation.viewmodels.OnboardingViewModel
 import zi.aris.ui.R.color
 
 
 @AndroidEntryPoint
-class CredentialsFragment : Fragment(layout.credentials_fragment) {
+class PinFragment : Fragment(layout.pin_fragment) {
 
     private val viewModel: OnboardingViewModel by viewModels()
 
     private lateinit var next: TextView
     private lateinit var previous: TextView
-    private lateinit var email: EditText
-    private lateinit var password: EditText
+    private lateinit var pin: EditText
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = CredentialsFragmentBinding.bind(view)
+        val binding = PinFragmentBinding.bind(view)
         next = binding.next
         previous = binding.previous
-        email = binding.emailEt
-        password = binding.passwordEt
+        pin = binding.pinEt
 
         registerStateSubscriber()
         setupViewListeners()
-        userLandedOnCredentialsScreen()
+        userLandedOnPinScreen()
     }
 
-    private fun userLandedOnCredentialsScreen() {
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.UserOnCredentialsScreen)
+    private fun userLandedOnPinScreen() {
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.UserOnPinScreen)
     }
 
     private fun setupViewListeners() {
         next.setOnClickListener {
             viewModel.consumeEvent(
-                OnboardingStateContract.OnboardingEvent.StepUserCredentialCompleted(
-                    email.text.toString(),
-                    password.text.toString()
+                OnboardingStateContract.OnboardingEvent.StepUserPinCompleted(
+                    pin.text.toString(),
                 )
             )
         }
         previous.setOnClickListener {
-            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepTC)
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepUserInfo)
         }
-        val emailFieldObserver = email.textObserver()
-        val passwordFieldObserver = password.textObserver()
-
-        merge(emailFieldObserver, passwordFieldObserver)
+        pin.textObserver()
             .debounce(300)
             .onStart { checkIfFieldsAreEmpty() }
             .onEach { checkIfFieldsAreEmpty() }
@@ -73,7 +68,8 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
     }
 
     private fun checkIfFieldsAreEmpty() {
-        if (email.text.toString().isNotEmpty() && password.text.toString().isNotEmpty()) {
+        if (pin.text.toString().isNotEmpty()
+        ) {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.NextStepAvailable)
         } else {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.NextStepUnavailable)
@@ -86,7 +82,6 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
 
     private fun applyState(viewState: OnboardingStateContract.OnboardingScreenState) {
         navigate(viewState.navigation)
-        renderUserCredentials(viewState.displayUserData)
         renderLoading(viewState.loading)
         renderStepAvailability(viewState.isNextStepAvailable)
     }
@@ -103,42 +98,27 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
 
     private fun navigate(navigateToStep: OnboardingStateContract.UserOnboardingSteps) {
         when (navigateToStep) {
-            is OnboardingStateContract.UserOnboardingSteps.NavigateToStepTC -> {
-                navigateToTCScreen()
-            }
             is OnboardingStateContract.UserOnboardingSteps.NavigateToStepUserInfo -> {
-                navigateToUserInfoScreen()
+                navigateToInfoScreen()
+            }
+            is OnboardingStateContract.UserOnboardingSteps.NavigateToStepUserPinConfirmation -> {
+                navigateToPinConfirmationScreen()
             }
             else -> {}
         }
+    }
+
+    private fun navigateToInfoScreen() {
+        val action = PinFragmentDirections.actionPinFragmentToInfoFragment()
+        this.findNavController().navigate(action)
         viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
-    private fun navigateToTCScreen() {
-        val action = CredentialsFragmentDirections.actionCredentialsFragmentToTcFragment()
+    private fun navigateToPinConfirmationScreen() {
+        val action = PinFragmentDirections.actionPinFragmentToPinConfirmationFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
-
-    private fun navigateToUserInfoScreen() {
-        val action = CredentialsFragmentDirections.actionCredentialsFragmentToInfoFragment()
-        this.findNavController().navigate(action)
-    }
-
-    private fun renderUserCredentials(userCredentials: OnboardingStateContract.UserData) {
-        when (userCredentials) {
-            is OnboardingStateContract.UserData.UserError -> {
-                /*todo display error*/
-            }
-            is OnboardingStateContract.UserData.UserCredentials -> {
-                email.text = getInstance().newEditable(userCredentials.email)
-                password.text = getInstance().newEditable("")
-                Toast.makeText(activity, getString(R.string.password_disclaimer), Toast.LENGTH_LONG).show()
-            }
-            else -> {}
-        }
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanUserInfoEffect)
-    }
-
 
     private fun renderError(errorText: String) {
         Toast.makeText(activity, errorText, Toast.LENGTH_LONG).show()

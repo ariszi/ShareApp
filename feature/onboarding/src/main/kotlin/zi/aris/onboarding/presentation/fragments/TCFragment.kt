@@ -50,11 +50,11 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
         navigate(viewState.navigation)
     }
 
-    private fun navigate(navChooser: OnboardingStateContract.UserOnboardingNavigation) {
+    private fun navigate(navChooser: OnboardingStateContract.UserOnboardingSteps) {
         when (navChooser) {
-            is OnboardingStateContract.UserOnboardingNavigation.NavigateToStepWelcome ->
+            is OnboardingStateContract.UserOnboardingSteps.NavigateToStepWelcome ->
                 navigateToWelcomeScreen()
-            is OnboardingStateContract.UserOnboardingNavigation.NavigateToStepUserCredentials ->
+            is OnboardingStateContract.UserOnboardingSteps.NavigateToStepUserCredentials ->
                 navigateToCredentialsScreen()
             else -> {}
         }
@@ -64,11 +64,13 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
     private fun navigateToWelcomeScreen() {
         val action = TCFragmentDirections.actionTcFragmentToWelcomeFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun navigateToCredentialsScreen() {
         val action = TCFragmentDirections.actionTcFragmentToCredentialsFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
 

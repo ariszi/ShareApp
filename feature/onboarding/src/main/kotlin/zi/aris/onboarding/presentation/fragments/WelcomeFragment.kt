@@ -36,14 +36,13 @@ class WelcomeFragment : Fragment(R.layout.welcome_fragment) {
 
     private fun applyState(viewState: OnboardingStateContract.OnboardingScreenState) {
         navigate(viewState.navigation)
-//        insertUserInfo(viewState.displayUserInfo)
-//        renderLoading(viewState.loading)
     }
 
-    private fun navigate(navChooser: OnboardingStateContract.UserOnboardingNavigation) {
-        if (navChooser != OnboardingStateContract.UserOnboardingNavigation.Idle) {
+    private fun navigate(navChooser: OnboardingStateContract.UserOnboardingSteps) {
+        if (navChooser != OnboardingStateContract.UserOnboardingSteps.Idle) {
             val action = WelcomeFragmentDirections.actionWelcomeFragmentToTcFragment()
             this.findNavController().navigate(action)
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
         }
 
     }

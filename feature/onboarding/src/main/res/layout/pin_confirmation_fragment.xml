@@ -5,69 +5,55 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/credentials_title"
+        android:id="@+id/pin_title"
         style="@style/Heading"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/spacing_5x"
         android:gravity="center"
-        android:text="@string/credentials_title"
+        android:text="@string/pin_confirmation_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/email_et"
+        android:id="@+id/pin_et"
         style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_3x"
-        android:layout_marginTop="@dimen/spacing_3x"
-        android:layout_marginEnd="@dimen/spacing_3x"
-        android:hint="@string/prompt_email_mandatory"
+        android:layout_marginStart="@dimen/spacing_8x"
+        android:layout_marginTop="@dimen/spacing_5x"
+        android:layout_marginEnd="@dimen/spacing_8x"
+        android:hint="@string/prompt_pin_mandatory"
+        android:lines="2"
         android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
+        android:inputType="numberPassword"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/credentials_title" />
+        app:layout_constraintTop_toBottomOf="@+id/pin_title" />
 
-    <EditText
-        android:id="@+id/password_et"
-        style="@style/Text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_3x"
-        android:layout_marginTop="@dimen/spacing_3x"
-        android:layout_marginEnd="@dimen/spacing_3x"
-        android:hint="@string/prompt_password_mandatory"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_et" />
 
     <TextView
         android:id="@+id/disclaimer_tv"
         style="@style/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_3x"
+        android:layout_marginStart="@dimen/spacing_8x"
         android:layout_marginTop="@dimen/spacing_3x"
-        android:layout_marginEnd="@dimen/spacing_3x"
-        android:text="@string/mandatory_fields_disclaimer"
+        android:text="@string/pin_confirmation_disclaimer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_et" />
+        app:layout_constraintTop_toBottomOf="@+id/pin_et" />
 
 
     <TextView
-        android:id="@+id/next"
+        android:id="@+id/done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/spacing_3x"
         android:layout_marginBottom="@dimen/spacing_3x"
         android:enabled="false"
-        android:text="@string/next"
+        android:text="@string/done"
         android:textColor="@color/purple_200"
         android:textSize="22sp"
         android:textStyle="bold"

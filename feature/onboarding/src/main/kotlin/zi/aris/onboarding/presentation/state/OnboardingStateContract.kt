@@ -7,39 +7,49 @@ class OnboardingStateContract {
 
     sealed class OnboardingEvent : IntentAction {
         object StepWelcomeCompleted : OnboardingEvent()
-        object GoBackToStepWelcome : OnboardingEvent()
         object StepTCCompleted : OnboardingEvent()
+        object GoBackToStepWelcome : OnboardingEvent()
         object GoBackToStepTC : OnboardingEvent()
         data class StepUserCredentialCompleted(val email: String, val password: String) : OnboardingEvent()
         object GoBackToStepUserCredential : OnboardingEvent()
-        data class StepUserInfoCompleted(val name: String, val lastName: String) : OnboardingEvent()
+        data class StepUserInfoCompleted(val name: String, val lastName: String, val phone:String) : OnboardingEvent()
         object GoBackToStepUserInfo : OnboardingEvent()
         data class StepUserPinCompleted(val pin: String) : OnboardingEvent()
         object GoBackToStepUserPin : OnboardingEvent()
         data class StepUserPinConfirmationCompleted(val pin: String) : OnboardingEvent()
         object UserOnCredentialsScreen : OnboardingEvent()
+        object UserOnInfoScreen : OnboardingEvent()
+        object UserOnPinScreen : OnboardingEvent()
         object NextStepAvailable : OnboardingEvent()
         object NextStepUnavailable : OnboardingEvent()
+        object CleanNavigationEffect : OnboardingEvent()
+        object CleanUserInfoEffect : OnboardingEvent()
     }
 
     data class OnboardingScreenState(
         val loading: Boolean = false,
         val isNextStepAvailable: Boolean = false,
-        val navigation: UserOnboardingNavigation = UserOnboardingNavigation.Idle,
-        val displayUserInfo: UserInfo = UserInfo.Idle,
+        val navigation: UserOnboardingSteps = UserOnboardingSteps.Idle,
+        val displayUserData: UserData = UserData.Idle,
         val genericError: String? = null
     ) : State
 
-    sealed class UserOnboardingNavigation {
-        object Idle : UserOnboardingNavigation()
-        object NavigateToStepTC : UserOnboardingNavigation()
-        object NavigateToStepWelcome : UserOnboardingNavigation()
-        object NavigateToStepUserCredentials : UserOnboardingNavigation()
-        object NavigateToStepUserInfo : UserOnboardingNavigation()
+    sealed class UserOnboardingSteps {
+        object Idle : UserOnboardingSteps()
+        object NavigateToStepTC : UserOnboardingSteps()
+        object NavigateToStepWelcome : UserOnboardingSteps()
+        object NavigateToStepUserCredentials : UserOnboardingSteps()
+        object NavigateToStepUserInfo : UserOnboardingSteps()
+        object NavigateToStepUserPin : UserOnboardingSteps()
+        object NavigateToStepUserPinConfirmation : UserOnboardingSteps()
+        object NavigateToUsersProfile : UserOnboardingSteps()
     }
 
-    sealed class UserInfo {
-        object Idle : UserInfo()
-        data class UserCredentials(val email: String, val password: String) : UserInfo()
+    sealed class UserData {
+        object Idle : UserData()
+        object UserConfirmed : UserData()
+        data class UserError(val message: String) : UserData()
+        data class UserCredentials(val email: String) : UserData()
+        data class UserInfo(val name: String, val lastName: String, val phone: String) : UserData()
     }
 }

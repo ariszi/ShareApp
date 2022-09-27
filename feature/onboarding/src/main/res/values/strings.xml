@@ -7,11 +7,23 @@
         If you do not accept these Terms and Conditions you must immediately stop using the app.</string>
     <string name="welcome">Welcome</string>
     <string name="credentials_title">Credentials</string>
+    <string name="info_title">Info</string>
+    <string name="pin_title">Pin</string>
+    <string name="pin_confirmation_title">Pin confirmation</string>
     <string name="next">Next</string>
     <string name="previous">Back</string>
+    <string name="done">Done</string>
     <string name="prompt_email_mandatory">Email</string>
     <string name="prompt_password_mandatory">Password</string>
+    <string name="prompt_name_mandatory">Name</string>
+    <string name="prompt_pin_mandatory">Pin</string>
+    <string name="prompt_last_name_mandatory">Last name</string>
+    <string name="prompt_phone_mandatory">Phone</string>
     <string name="mandatory_fields_disclaimer">All fields are mandatory</string>
+    <string name="pin_disclaimer">Please add a pin for a fast login</string>
+    <string name="pin_confirmation_disclaimer">Please confirm the pin you \nhave entered a few seconds ago</string>
+    <string name="generic_error">Wow. Sorry that never happened before</string>
+    <string name="password_disclaimer">For safety purposes, you have to fill in the password again.</string>
 
     <string name="welcome_screen_description">Spicy jalapeno bacon ipsum dolor amet consectetur swine quis mollit.
         Pork belly ball tip leberkas jowl, culpa pariatur tongue turkey.
