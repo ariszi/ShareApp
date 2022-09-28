@@ -93,7 +93,6 @@ class InfoFragment : Fragment(layout.info_fragment) {
     private fun applyState(viewState: OnboardingStateContract.OnboardingScreenState) {
         navigate(viewState.navigation)
         insertUserInfo(viewState.displayUserData)
-        renderLoading(viewState.loading)
         renderStepAvailability(viewState.isNextStepAvailable)
     }
 
@@ -117,17 +116,18 @@ class InfoFragment : Fragment(layout.info_fragment) {
             }
             else -> {}
         }
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun navigateToCredentialsScreen() {
         val action = InfoFragmentDirections.actionInfoFragmentToCredentialsFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun navigateToPinScreen() {
         val action = InfoFragmentDirections.actionInfoFragmentToPinFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun insertUserInfo(userInfo: OnboardingStateContract.UserData) {
@@ -135,8 +135,8 @@ class InfoFragment : Fragment(layout.info_fragment) {
             name.text = getInstance().newEditable(userInfo.name)
             lastName.text = getInstance().newEditable(userInfo.lastName)
             phone.text = getInstance().newEditable(userInfo.phone)
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanUserInfoEffect)
         }
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanUserInfoEffect)
     }
 
 
@@ -144,9 +144,6 @@ class InfoFragment : Fragment(layout.info_fragment) {
         Toast.makeText(activity, errorText, Toast.LENGTH_LONG).show()
     }
 
-    private fun renderLoading(visibility: Boolean) {
-        // loading.visibilityExtension(visibility)
-    }
 }
 
 

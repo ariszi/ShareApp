@@ -27,11 +27,9 @@ class OnboardingStateContract {
     }
 
     data class OnboardingScreenState(
-        val loading: Boolean = false,
         val isNextStepAvailable: Boolean = false,
         val navigation: UserOnboardingSteps = UserOnboardingSteps.Idle,
         val displayUserData: UserData = UserData.Idle,
-        val genericError: String? = null
     ) : State
 
     sealed class UserOnboardingSteps {

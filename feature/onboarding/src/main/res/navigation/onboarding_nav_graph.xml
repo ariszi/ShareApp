@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="zi.aris.onboarding.presentation.fragments.WelcomeFragment"
-        app:popUpTo="@+id/login_nav"
-        android:label="welcome_fragment">
+        android:label="welcome_fragment"
+        app:popUpTo="@+id/login_nav">
         <action
             android:id="@+id/action_welcomeFragment_to_tcFragment"
             app:destination="@id/tcFragment" />
@@ -69,7 +69,17 @@
         <action
             android:id="@+id/action_pinConfirmationFragment_to_pinFragment"
             app:destination="@id/pinFragment" />
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_profile"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@+id/pinConfirmationFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="zi.aris.user.UserFragment"
+        android:label="profile_fragment" />
 
 
 </navigation>

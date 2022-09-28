@@ -25,8 +25,8 @@
     <string name="generic_error">Wow. Sorry that never happened before</string>
     <string name="password_disclaimer">For safety purposes, you have to fill in the password again.</string>
 
-    <string name="welcome_screen_description">Spicy jalapeno bacon ipsum dolor amet consectetur swine quis mollit.
-        Pork belly ball tip leberkas jowl, culpa pariatur tongue turkey.
-        Id tenderloin capicola, meatball jerky turducken veniam aliqua.
-        Meatball nisi culpa pig bresaola ball tip duis mollit t-bone corned beef qui.</string>
+    <string name="welcome_screen_description">Hello and welcome to this assignment.
+        We are going to ask you to share, some basic info about you, like the credentials you
+    want to use in order to login, some personal info(not going to spam, promise), and finally a pin for your
+    own convenience of fast logins. This app is not GDPR complied, yet.</string>
 </resources>

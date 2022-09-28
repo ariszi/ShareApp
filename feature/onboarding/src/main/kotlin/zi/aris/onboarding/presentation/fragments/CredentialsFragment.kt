@@ -111,17 +111,18 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
             }
             else -> {}
         }
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun navigateToTCScreen() {
         val action = CredentialsFragmentDirections.actionCredentialsFragmentToTcFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun navigateToUserInfoScreen() {
         val action = CredentialsFragmentDirections.actionCredentialsFragmentToInfoFragment()
         this.findNavController().navigate(action)
+        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun renderUserCredentials(userCredentials: OnboardingStateContract.UserData) {
@@ -132,16 +133,11 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
             is OnboardingStateContract.UserData.UserCredentials -> {
                 email.text = getInstance().newEditable(userCredentials.email)
                 password.text = getInstance().newEditable("")
-                Toast.makeText(activity, getString(R.string.password_disclaimer), Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, getString(R.string.password_disclaimer), Toast.LENGTH_SHORT).show()
+                viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanUserInfoEffect)
             }
             else -> {}
         }
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanUserInfoEffect)
-    }
-
-
-    private fun renderError(errorText: String) {
-        Toast.makeText(activity, errorText, Toast.LENGTH_LONG).show()
     }
 
     private fun renderLoading(visibility: Boolean) {

@@ -84,7 +84,9 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
 
     private fun renderUserInteraction(displayUserData: OnboardingStateContract.UserData) {
         when (displayUserData) {
-            is OnboardingStateContract.UserData.UserConfirmed -> Toast.makeText(activity, "Nice", Toast.LENGTH_LONG).show()
+            is OnboardingStateContract.UserData.UserConfirmed -> {
+                navigateToUsersProfile()
+            }
             is OnboardingStateContract.UserData.UserError -> Toast.makeText(
                 activity,
                 displayUserData.message,
@@ -115,7 +117,6 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
             }
             else -> {}
         }
-        viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 
     private fun navigateToPinScreen() {
@@ -125,8 +126,8 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
     }
 
     private fun navigateToUsersProfile() {
-//        val action = PinFragmentDirections.actionPinFragmentToInfoFragment()
-//        this.findNavController().navigate(action)
+        val action = PinConfirmationFragmentDirections.actionPinConfirmationFragmentToProfile()
+        this.findNavController().navigate(action)
         viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 

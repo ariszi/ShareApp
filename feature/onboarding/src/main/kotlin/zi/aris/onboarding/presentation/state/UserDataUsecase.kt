@@ -25,7 +25,7 @@ class UserDataUsecase @Inject constructor(private val userData: UserRepositoryCo
     suspend fun getUserInfo(): OnboardingStateContract.UserData {
         return when (val result = userData.usersInfo().first()) {
             is Result.Success -> result.data.toUserInfo()
-            is Result.Error -> result.toErrorSavingData()
+            is Result.Error -> result.toDataError()
             else -> {
                 OnboardingStateContract.UserData.UserError(GENERIC_ERROR)
             }
@@ -49,11 +49,17 @@ class UserDataUsecase @Inject constructor(private val userData: UserRepositoryCo
     }
 
 
-    private fun User.toUserCredentials() = OnboardingStateContract.UserData.UserCredentials(email)
+    private fun User.toUserCredentials(): OnboardingStateContract.UserData {
+        return if (email.isEmpty()) {
+            OnboardingStateContract.UserData.Idle
+        } else {
+            OnboardingStateContract.UserData.UserCredentials(email)
+        }
+    }
 
     private fun User.toUserInfo() = OnboardingStateContract.UserData.UserInfo(name, lastName, telephone)
 
-    private fun Result.Error.toErrorSavingData(): OnboardingStateContract.UserData.UserError {
+    private fun Result.Error.toDataError(): OnboardingStateContract.UserData.UserError {
         return when (this) {
             is ErrorWithMessage -> OnboardingStateContract.UserData.UserError(this.message)
             else -> OnboardingStateContract.UserData.UserError(GENERIC_ERROR)
@@ -64,7 +70,7 @@ class UserDataUsecase @Inject constructor(private val userData: UserRepositoryCo
     suspend fun confirmUsersPassword(pin: String): OnboardingStateContract.UserData {
         return when (val result = userData.confirmUsersPin(pin)) {
             is Result.Success -> OnboardingStateContract.UserData.UserConfirmed
-            is Result.Error -> result.toErrorSavingData()
+            is Result.Error -> result.toDataError()
             else -> {
                 OnboardingStateContract.UserData.UserError(GENERIC_ERROR)
             }

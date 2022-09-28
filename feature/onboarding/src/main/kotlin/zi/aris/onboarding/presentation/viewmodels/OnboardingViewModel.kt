@@ -13,8 +13,6 @@ import javax.inject.Inject
 @HiltViewModel
 class OnboardingViewModel @Inject constructor(private val userDataUsecase: UserDataUsecase) : ViewModel() {
 
-    private val loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
     private val isNextStepAvailable: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     private val usersSteps: MutableStateFlow<OnboardingStateContract.UserOnboardingSteps> =
@@ -35,13 +33,11 @@ class OnboardingViewModel @Inject constructor(private val userDataUsecase: UserD
 
     val state: StateFlow<OnboardingStateContract.OnboardingScreenState> =
         combine(
-            loading,
             isNextStepAvailable,
             usersSteps,
             userData
-        ) { loading, isNextStepAvailable, navigation, userData ->
+        ) {  isNextStepAvailable, navigation, userData ->
             OnboardingStateContract.OnboardingScreenState(
-                loading,
                 isNextStepAvailable,
                 navigation,
                 userData
