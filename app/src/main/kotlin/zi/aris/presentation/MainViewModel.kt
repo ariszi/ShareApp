@@ -11,8 +11,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val userNavChooserUsecase: UserNavigationChooserUsecase) : ViewModel() {
 
-    private val loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
     private val navigation: MutableStateFlow<MainScreenContract.UserNavOptions> =
         MutableStateFlow(MainScreenContract.UserNavOptions.Idle)
 
@@ -21,17 +19,13 @@ class MainViewModel @Inject constructor(private val userNavChooserUsecase: UserN
 
 
     val state: StateFlow<MainScreenContract.MainScreenState> =
-        combine(loading, navigation) { loading, navigation ->
-            MainScreenContract.MainScreenState(
-                loading,
-                navigation
-            )
-        }.flowOn(Dispatchers.Default)
+        flow<MainScreenContract.MainScreenState> { navigation.value }.flowOn(Dispatchers.Default)
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
                 initialValue = MainScreenContract.MainScreenState()
             )
+
 
     private fun navigateUser() {
         viewModelScope.launch { navigation.update { navChooser.first() } }

@@ -87,7 +87,6 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
     private fun applyState(viewState: OnboardingStateContract.OnboardingScreenState) {
         navigate(viewState.navigation)
         renderUserCredentials(viewState.displayUserData)
-        renderLoading(viewState.loading)
         renderStepAvailability(viewState.isNextStepAvailable)
     }
 
@@ -140,9 +139,6 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
         }
     }
 
-    private fun renderLoading(visibility: Boolean) {
-        // loading.visibilityExtension(visibility)
-    }
 }
 
 

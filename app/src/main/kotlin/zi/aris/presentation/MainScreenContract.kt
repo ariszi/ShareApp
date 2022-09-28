@@ -10,7 +10,6 @@ class MainScreenContract {
     }
 
     data class MainScreenState(
-        val loading: Boolean = false,
         val navChooser: UserNavOptions = UserNavOptions.Idle,
     ) : State
 

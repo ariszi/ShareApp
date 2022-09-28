@@ -77,7 +77,6 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
 
     private fun applyState(viewState: OnboardingStateContract.OnboardingScreenState) {
         navigate(viewState.navigation)
-        renderLoading(viewState.loading)
         renderStepAvailability(viewState.isNextStepAvailable)
         renderUserInteraction(viewState.displayUserData)
     }
@@ -135,9 +134,6 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
         Toast.makeText(activity, errorText, Toast.LENGTH_LONG).show()
     }
 
-    private fun renderLoading(visibility: Boolean) {
-        // loading.visibilityExtension(visibility)
-    }
 }
 
 
