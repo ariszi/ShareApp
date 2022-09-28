@@ -5,7 +5,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import zi.aris.data_provider.domain.*
 import javax.inject.Inject
 
@@ -23,7 +26,8 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
         private val USER_PIN = stringPreferencesKey("user_pin")
         private val USER_PIN_CONFIRMED = booleanPreferencesKey("user_pin_confirmed")
 
-        private val USER_NOT_CONFIRMED = "The pin you have entered doesn't match with the previous"
+        private const val USER_NOT_CONFIRMED = "The pin you have entered doesn't match with your previous input"
+        private const val PIN_NOT_VALID = "Pin is not valid. Please try again"
 
     }
 
@@ -63,16 +67,12 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
     }
 
 
-    override suspend fun validateUsersPin(pin: String): Flow<Result<Unit>> {
-        return flow<Result<Unit>> {
-            val storedPin = dataStore.data.first()[USER_PIN] ?: ""
-            if (storedPin == pin) {
-                Result.Success(Unit)
-            } else
-                throw UnauthorisedException()
-        }.catch { cause: Throwable ->
-            cause.message?.let { ErrorWithMessage(it) } ?: GenericError
-        }
+    override suspend fun validateUsersPin(pin: String): Result<Unit> {
+        val storedPin = dataStore.data.first()[USER_PIN] ?: ""
+        return if (storedPin == pin) {
+            Result.Success(Unit)
+        } else
+            ErrorWithMessage(PIN_NOT_VALID)
     }
 
     override suspend fun cleanUserData() {

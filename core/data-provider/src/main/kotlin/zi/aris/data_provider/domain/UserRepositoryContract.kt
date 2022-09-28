@@ -13,7 +13,7 @@ interface UserRepositoryContract {
 
     suspend fun confirmUsersPin(pin: String): Result<Unit>
 
-    suspend fun validateUsersPin(pin: String): Flow<Result<Unit>>
+    suspend fun validateUsersPin(pin: String):Result<Unit>
 
     suspend fun isUserRegistered(): Boolean
 

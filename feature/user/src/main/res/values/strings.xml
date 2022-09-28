@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="user_profile_title">Profile</string>
+    <string name="user_sign_out">Sign out</string>
+    <string name="user_pin_login_title">Login</string>
+    <string name="prompt_pin_mandatory">Pin</string>
+    <string name="pin_login_disclaimer">Please insert your pin to login.</string>
+    <string name="signin_button">Sign in</string>
+    <string name="name_prompt">Name</string>
+    <string name="last_name_prompt">Last name</string>
+</resources>
