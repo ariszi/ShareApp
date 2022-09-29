@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
@@ -19,9 +18,13 @@ import kotlinx.coroutines.launch
 import zi.aris.feature_shared.textObserver
 import zi.aris.pin.R
 import zi.aris.pin.databinding.PinLoginFragmentBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PinLoginFragment : Fragment(R.layout.pin_login_fragment) {
+
+    @Inject
+    lateinit var router: LoginRouter
 
     private val viewModel: PinLoginViewModel by viewModels()
 
@@ -84,8 +87,7 @@ class PinLoginFragment : Fragment(R.layout.pin_login_fragment) {
     }
 
     private fun navigateToUserProfile() {
-        val action = PinLoginFragmentDirections.actionPinValidationFragmentToProfile()
-        this.findNavController().navigate(action)
+        router.navigateFromLoginToUserProfile()
         viewModel.consumeEvent(LoginContract.UserLoginEvent.CleanUserInfoEffect)
     }
 

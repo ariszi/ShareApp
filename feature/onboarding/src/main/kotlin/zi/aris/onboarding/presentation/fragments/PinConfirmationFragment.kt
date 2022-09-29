@@ -19,13 +19,18 @@ import kotlinx.coroutines.launch
 import zi.aris.feature_shared.textObserver
 import zi.aris.onboarding.R.layout
 import zi.aris.onboarding.databinding.PinConfirmationFragmentBinding
+import zi.aris.onboarding.presentation.OnboardingRouter
 import zi.aris.onboarding.presentation.state.OnboardingStateContract
 import zi.aris.onboarding.presentation.viewmodels.OnboardingViewModel
 import zi.aris.ui.R.color
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
+
+    @Inject
+    lateinit var router: OnboardingRouter
 
     private val viewModel: OnboardingViewModel by viewModels()
 
@@ -125,8 +130,7 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
     }
 
     private fun navigateToUsersProfile() {
-        val action = PinConfirmationFragmentDirections.actionPinConfirmationFragmentToProfile()
-        this.findNavController().navigate(action)
+        router.navigateFromOnboardingToUserProfile()
         viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
     }
 

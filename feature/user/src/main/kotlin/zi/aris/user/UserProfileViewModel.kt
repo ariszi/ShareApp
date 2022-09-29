@@ -37,7 +37,7 @@ class UserProfileViewModel @Inject constructor(private val userUsecase: UserProf
             )
 
     private fun signOutUser() {
-        viewModelScope.launch { userUsecase.signOut() }
+     //   viewModelScope.launch { userUsecase.signOut() }
         navigation.update { UserProfileContract.UserNavigation.NavigateToOnboarding }
     }
 

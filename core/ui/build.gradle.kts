@@ -21,8 +21,6 @@ dependencies {
     api(Libs.composeToolingLibrary)
     api(Libs.composeFoundationLibrary)
     api(Libs.composeCompilerLibrary)
-    api(Libs.glideLibrary)
-    api(Libs.lottieLibrary)
     api(Libs.navigationLibrary)
     api(Libs.navigationKTXLibrary)
     api(Libs.navigationComposeLibrary)

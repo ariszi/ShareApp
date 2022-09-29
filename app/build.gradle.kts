@@ -64,12 +64,10 @@ dependencies {
     implementation(Libs.vmSaveStateLibrary)
     implementation(Libs.lifecycleRuntimeKTXLibrary)
     implementation(Libs.jsrLibrary)
-    implementation(Libs.okHttpLibrary)
     implementation(Libs.kotlinxCoroutinesCoreLibrary)
     implementation(Libs.kotlinxCoroutinesAndroidLibrary)
     implementation(Libs.constraintLayoutLibrary)
     implementation(Libs.recycleViewLibrary)
-    implementation(Libs.timberLibrary)
     implementation(Libs.hiltAndroidLibrary)
     implementation(Libs.hiltFragmentNavigationLibrary)
 

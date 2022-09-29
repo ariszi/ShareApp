@@ -7,13 +7,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import zi.aris.user.databinding.UserProfileFragmentBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class UserFragment : Fragment(R.layout.user_profile_fragment) {
+
+    @Inject
+    lateinit var router: UserProfileRouter
 
     private val viewModel: UserProfileViewModel by viewModels()
 
@@ -67,8 +70,7 @@ class UserFragment : Fragment(R.layout.user_profile_fragment) {
     }
 
     private fun navigateToOnboarding() {
-        val action = UserFragmentDirections.actionProfileFragmentToWelcomeFragment()
-        this.findNavController().navigate(action)
+        router.navigateFromProfileToOnBoarding()
         viewModel.consumeEvent(UserProfileContract.UserProfileEvent.CleanUserInfoEffect)
     }
 
@@ -79,6 +81,7 @@ class UserFragment : Fragment(R.layout.user_profile_fragment) {
             )
         }
     }
+
 
     private fun userLandedOnProfileScreen() {
         viewModel.consumeEvent(UserProfileContract.UserProfileEvent.UserLandedOnProfile)

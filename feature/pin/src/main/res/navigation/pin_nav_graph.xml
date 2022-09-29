@@ -4,22 +4,11 @@
     android:id="@+id/pin_nav_graph"
     app:startDestination="@id/pinLoginFragment">
 
+
     <fragment
         android:id="@+id/pinLoginFragment"
         android:name="zi.aris.login.PinLoginFragment"
-        android:label="pin_login_fragment" >
-        <action
-            android:id="@+id/action_pinValidationFragment_to_profile"
-            app:destination="@id/profileFragment"
-            app:popUpTo="@+id/pinLoginFragment"
-            app:popUpToInclusive="true"
-            />
-    </fragment>
-
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="zi.aris.user.UserFragment"
-        android:label="profile_fragment">
+        android:label="pin_login_fragment">
     </fragment>
 
 

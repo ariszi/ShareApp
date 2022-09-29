@@ -1,8 +1,5 @@
 object Libs {
 
-    const val kotlinStandardLibrary =
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin_version}"
-
     const val appCompactLibrary = "androidx.appcompat:appcompat:${Versions.appcompat}"
 
     const val coreKTXLibrary = "androidx.core:core-ktx:${Versions.core_ktx}"
@@ -14,8 +11,6 @@ object Libs {
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_viewmodel_savedstate}"
 
     const val jsrLibrary = "javax.annotation:jsr250-api:${Versions.annotation_jsr250_api}"
-
-    const val okHttpLibrary = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
 
     const val fragmentKTXLibrary = "androidx.fragment:fragment-ktx:${Versions.fragment}"
 
@@ -31,8 +26,6 @@ object Libs {
     const val recycleViewLibrary =
         "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
 
-    const val glideLibrary = "com.github.bumptech.glide:glide:${Versions.glide}"
-
     const val navigationLibrary =
         "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
 
@@ -44,10 +37,6 @@ object Libs {
 
     const val navigationComposeLibrary =
         "androidx.navigation:navigation-compose:${Versions.nav_version}"
-
-    const val timberLibrary = "com.jakewharton.timber:timber:${Versions.timber}"
-
-    const val lottieLibrary = "com.airbnb.android:lottie:${Versions.lottie}"
 
     const val injectAssistedAnnotationDaggerLibrary =
         "com.squareup.inject:assisted-inject-annotations-dagger2:${Versions.assisted_inject_annotations_dagger}"
@@ -65,9 +54,6 @@ object Libs {
 
     const val androidxTestRunnerLibrary =
         "androidx.test:runner:${Versions.androidx_test_version}"
-
-    const val espressoCoreLibrary =
-        "androidx.test.espresso:espresso-core:${Versions.espresso_core}"
 
     const val dataBindingLibrary =
         "androidx.databinding:databinding-runtime:${Versions.data_binding}"
@@ -108,7 +94,6 @@ object Plugin {
 
     const val androidToolsBuildGradleLibrary = "com.android.tools.build:gradle:${Versions.gradle}"
 
-    const val javapoetGradleLibrary = "com.squareup:javapoet:${Versions.javapoet}"
 }
 
 object AppConfig {
@@ -140,18 +125,13 @@ object Versions {
     const val hilt_fragment_nav = "1.0.0"
     const val lifecycle_viewmodel_savedstate = "2.5.1"
     const val annotation_jsr250_api = "1.0"
-    const val okhttp = "4.9.3"
     const val coroutines = "1.6.4"
     const val constraint_layout = "2.1.4"
     const val recyclerview = "1.2.1"
-    const val glide = "4.12.0"
-    const val timber = "4.7.1"
-    const val lottie = "5.0.3"
     const val assisted_inject_annotations_dagger = "0.8.1"
     const val junit = "5.8.1"
     const val junit4 = "4.13.2"
     const val androidx_test_version = "1.4.0"
-    const val espresso_core = "3.4.0"
     const val material_components = "1.8.0-alpha01"
     const val datastore = "1.0.0"
     const val compose_material = "1.3.0-beta03"
