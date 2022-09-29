@@ -70,6 +70,32 @@
 
 
     <TextView
+        android:id="@+id/email_prompt_tv"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:textColor="@color/purple_500"
+        android:text="@string/email_prompt"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_3x"
+        android:layout_marginTop="@dimen/spacing_3x"
+        android:layout_marginEnd="@dimen/spacing_3x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_name_tv" />
+
+    <TextView
+        android:id="@+id/email_tv"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_3x"
+        android:layout_marginTop="@dimen/spacing_3x"
+        android:layout_marginEnd="@dimen/spacing_3x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_prompt_tv" />
+
+
+    <TextView
         android:id="@+id/sign_out_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

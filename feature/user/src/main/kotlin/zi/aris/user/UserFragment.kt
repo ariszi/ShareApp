@@ -23,6 +23,7 @@ class UserFragment : Fragment(R.layout.user_profile_fragment) {
     private lateinit var name: TextView
     private lateinit var lastName: TextView
     private lateinit var signOut: TextView
+    private lateinit var email: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,6 +31,7 @@ class UserFragment : Fragment(R.layout.user_profile_fragment) {
         name = binding.nameTv
         lastName = binding.lastNameTv
         signOut = binding.signOutBtn
+        email = binding.emailTv
 
         registerStateSubscriber()
         setupViewListeners()
@@ -62,6 +64,7 @@ class UserFragment : Fragment(R.layout.user_profile_fragment) {
         if (userInfo is UserProfileContract.UserData.UserInfo) {
             name.text = Editable.Factory.getInstance().newEditable(userInfo.name)
             lastName.text = Editable.Factory.getInstance().newEditable(userInfo.lastName)
+            email.text = Editable.Factory.getInstance().newEditable(userInfo.email)
         }
     }
 

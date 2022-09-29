@@ -26,5 +26,6 @@ class UserProfileUsecase @Inject constructor(private val userData: UserRepositor
             }
         }
     }
-    private fun User.toUserInfo() = UserProfileContract.UserData.UserInfo(name, lastName)
+
+    private fun User.toUserInfo() = UserProfileContract.UserData.UserInfo(name, lastName, email)
 }

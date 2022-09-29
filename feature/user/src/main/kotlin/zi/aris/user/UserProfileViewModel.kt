@@ -1,5 +1,6 @@
 package zi.aris.user
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,10 +10,27 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UserProfileViewModel @Inject constructor(private val userUsecase: UserProfileUsecase) : ViewModel() {
+class UserProfileViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val userUsecase: UserProfileUsecase
+) : ViewModel() {
+
+    private companion object {
+
+        const val USER_PROFILE_ID = "user_profile_id"
+    }
+
+    private val userNavSavedState = savedStateHandle
+        .getStateFlow<UserProfileContract.UserNavigation>(
+            USER_PROFILE_ID,
+            UserProfileContract.UserNavigation.Idle
+        ).filterNotNull()
+
 
     private val navigation: MutableStateFlow<UserProfileContract.UserNavigation> =
         MutableStateFlow(UserProfileContract.UserNavigation.Idle)
+
+    private val navFlow = merge(userNavSavedState, navigation)
 
     private val userData: MutableStateFlow<UserProfileContract.UserData> =
         MutableStateFlow(UserProfileContract.UserData.Idle)
@@ -24,7 +42,7 @@ class UserProfileViewModel @Inject constructor(private val userUsecase: UserProf
 
 
     val state: StateFlow<UserProfileContract.UserProfileState> =
-        combine(navigation, userData) { navigation, userData ->
+        combine(navFlow, userData) { navigation, userData ->
             UserProfileContract.UserProfileState(
                 navigation,
                 userData

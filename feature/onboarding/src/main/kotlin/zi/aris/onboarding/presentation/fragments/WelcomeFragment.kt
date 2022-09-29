@@ -35,7 +35,7 @@ class WelcomeFragment : Fragment(R.layout.welcome_fragment) {
 
     private fun registerViewObservers() {
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
-            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.StepWelcomeCompleted)
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.ExitOnboarding)
         }
     }
 

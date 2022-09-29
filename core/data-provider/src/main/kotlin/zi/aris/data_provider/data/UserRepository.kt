@@ -99,7 +99,8 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
                 User(
                     name = preferences[USER_FIRST_NAME] ?: "",
                     lastName = preferences[USER_LAST_NAME] ?: "",
-                    telephone = preferences[USER_TELEPHONE] ?: ""
+                    telephone = preferences[USER_TELEPHONE] ?: "",
+                    email = preferences[USER_EMAIL] ?: ""
                 )
             )
         }.catch { cause: Throwable -> cause.message?.let { ErrorWithMessage(it) } ?: GenericError }

@@ -8,4 +8,5 @@
     <string name="signin_button">Sign in</string>
     <string name="name_prompt">Name</string>
     <string name="last_name_prompt">Last name</string>
+    <string name="email_prompt">Email</string>
 </resources>

@@ -26,6 +26,6 @@ class UserProfileContract {
     sealed class UserData {
         object Idle : UserData()
         data class UserError(val message: String) : UserData()
-        data class UserInfo(val name: String, val lastName: String) : UserData()
+        data class UserInfo(val name: String, val lastName: String, val email: String) : UserData()
     }
 }

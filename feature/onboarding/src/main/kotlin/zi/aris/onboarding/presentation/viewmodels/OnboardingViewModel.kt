@@ -1,5 +1,6 @@
 package zi.aris.onboarding.presentation.viewmodels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,7 +12,21 @@ import zi.aris.onboarding.presentation.state.UserDataUsecase
 import javax.inject.Inject
 
 @HiltViewModel
-class OnboardingViewModel @Inject constructor(private val userDataUsecase: UserDataUsecase) : ViewModel() {
+class OnboardingViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val userDataUsecase: UserDataUsecase
+) : ViewModel() {
+
+    private companion object {
+
+        const val ON_BOARDING_ID = "onboarding_id"
+    }
+
+    private val userStepsSavedState = savedStateHandle
+        .getStateFlow<OnboardingStateContract.UserOnboardingSteps>(
+            ON_BOARDING_ID,
+            OnboardingStateContract.UserOnboardingSteps.Idle
+        ).filterNotNull()
 
     private val isNextStepAvailable: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
@@ -31,16 +46,19 @@ class OnboardingViewModel @Inject constructor(private val userDataUsecase: UserD
             OnboardingStateContract.UserData.UserError(UserDataUsecase.GENERIC_ERROR)
         }
 
+    private val userStepsFlow: Flow<OnboardingStateContract.UserOnboardingSteps> = merge(userStepsSavedState, usersSteps)
+
     val state: StateFlow<OnboardingStateContract.OnboardingScreenState> =
         combine(
             isNextStepAvailable,
-            usersSteps,
-            userData
-        ) {  isNextStepAvailable, navigation, userData ->
+            userStepsFlow,
+            userData,
+
+            ) { isNextStepAvailable, userStepsFlow, userData ->
             OnboardingStateContract.OnboardingScreenState(
-                isNextStepAvailable,
-                navigation,
-                userData
+                isNextStepAvailable = isNextStepAvailable,
+                navigation = userStepsFlow,
+                displayUserData = userData
             )
         }.flowOn(Dispatchers.Default)
             .stateIn(
