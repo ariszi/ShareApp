@@ -21,7 +21,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     packagingOptions {
-        resources.excludes.add("META-INF/*")
+        resources.excludes.add("META-INF/**")
         resources.excludes.add("**/attach_hotspot_windows.dll")
     }
 }
