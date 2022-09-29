@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -60,6 +61,11 @@ class PinConfirmationFragment : Fragment(layout.pin_confirmation_fragment) {
         previous.setOnClickListener {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepUserPin)
         }
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepUserPin)
+        }
+
         pin.textObserver()
             .debounce(300)
             .onStart { checkIfFieldsAreEmpty() }

@@ -9,25 +9,6 @@
         android:name="zi.aris.presentation.MainFragment"
         android:label="mainFragment" />
 
-<!--    <action-->
-<!--        android:id="@+id/action_pinConfirmationFragment_to_profile"-->
-<!--        app:destination="@id/pin_nav_graph"-->
-<!--        app:popUpTo="@+id/onboarding_nav_graph"-->
-<!--        app:popUpToInclusive="true" />-->
-
-<!--    <action-->
-<!--        android:id="@+id/action_pinValidationFragment_to_profile"-->
-<!--        app:destination="@id/profile_nav_graph"-->
-<!--        app:popUpTo="@+id/pinLoginFragment"-->
-<!--        app:popUpToInclusive="true"-->
-<!--        />-->
-
-<!--    <action-->
-<!--        android:id="@+id/action_profileFragment_to_oboarding"-->
-<!--        app:destination="@id/onboarding_nav_graph"-->
-<!--        app:popUpTo="@id/profile_nav_graph"-->
-<!--        app:popUpToInclusive="true" />-->
-
     <include app:graph="@navigation/pin_nav_graph" />
     <include app:graph="@navigation/profile_nav_graph" />
     <include app:graph="@navigation/onboarding_nav_graph" />

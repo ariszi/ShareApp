@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -60,6 +61,10 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
             )
         }
         previous.setOnClickListener {
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepTC)
+        }
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepTC)
         }
         val emailFieldObserver = email.textObserver()

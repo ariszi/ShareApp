@@ -24,6 +24,7 @@
     <string name="pin_confirmation_disclaimer">Please confirm the pin you \nhave entered a few seconds ago</string>
     <string name="generic_error">Wow. Sorry that never happened before</string>
     <string name="password_disclaimer">For safety purposes, you have to fill in the password again.</string>
+    <string name="award_disclaimer">Design award 2022</string>
 
     <string name="welcome_screen_description">Hello and welcome to this assignment.
         We are going to ask you to share, some basic info about you, like the credentials you

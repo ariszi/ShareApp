@@ -3,6 +3,7 @@ package zi.aris.onboarding.presentation.fragments
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +41,9 @@ class TCFragment : Fragment(R.layout.tc_fragment) {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepWelcome)
         }
 
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.GoBackToStepWelcome)
+        }
     }
 
     private fun registerStateSubscriber() {

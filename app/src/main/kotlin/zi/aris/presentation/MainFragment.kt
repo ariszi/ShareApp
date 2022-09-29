@@ -30,7 +30,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun navigateUser(navState: MainScreenContract.UserNavOptions) {
-        val hostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        val hostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment)
         when (navState) {
             is MainScreenContract.UserNavOptions.NavigateToPinSignIn ->
                 hostFragment?.findNavController()?.setGraph(zi.aris.pin.R.navigation.pin_nav_graph)

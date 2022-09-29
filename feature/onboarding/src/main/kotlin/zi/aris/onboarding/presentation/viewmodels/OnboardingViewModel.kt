@@ -133,6 +133,9 @@ class OnboardingViewModel @Inject constructor(private val userDataUsecase: UserD
             is OnboardingStateContract.OnboardingEvent.UserOnPinScreen -> {
                 viewModelScope.launch { userDataUsecase.clearUsersPin() }
             }
+            is OnboardingStateContract.OnboardingEvent.ExitOnboarding -> {
+                usersSteps.update { OnboardingStateContract.UserOnboardingSteps.ExitApp }
+            }
         }
     }
 

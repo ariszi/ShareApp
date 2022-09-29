@@ -3,6 +3,7 @@ package zi.aris.onboarding.presentation.fragments
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +29,14 @@ class WelcomeFragment : Fragment(R.layout.welcome_fragment) {
             viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.StepWelcomeCompleted)
         }
         registerStateSubscriber()
+        registerViewObservers()
+
+    }
+
+    private fun registerViewObservers() {
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
+            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.StepWelcomeCompleted)
+        }
     }
 
     private fun registerStateSubscriber() {
@@ -39,10 +48,16 @@ class WelcomeFragment : Fragment(R.layout.welcome_fragment) {
     }
 
     private fun navigate(navChooser: OnboardingStateContract.UserOnboardingSteps) {
-        if (navChooser != OnboardingStateContract.UserOnboardingSteps.Idle) {
-            val action = WelcomeFragmentDirections.actionWelcomeFragmentToTcFragment()
-            this.findNavController().navigate(action)
-            viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
+        when(navChooser){
+            is OnboardingStateContract.UserOnboardingSteps.NavigateToStepTC ->{
+                val action = WelcomeFragmentDirections.actionWelcomeFragmentToTcFragment()
+                this.findNavController().navigate(action)
+                viewModel.consumeEvent(OnboardingStateContract.OnboardingEvent.CleanNavigationEffect)
+            }
+            is OnboardingStateContract.UserOnboardingSteps.ExitApp ->{
+                activity?.finish()
+            }
+            else -> {}
         }
 
     }

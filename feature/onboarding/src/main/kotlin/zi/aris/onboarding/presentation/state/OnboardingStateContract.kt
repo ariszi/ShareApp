@@ -6,6 +6,7 @@ import zi.aris.ui.base_contracts.State
 class OnboardingStateContract {
 
     sealed class OnboardingEvent : IntentAction {
+        object ExitOnboarding : OnboardingEvent()
         object StepWelcomeCompleted : OnboardingEvent()
         object StepTCCompleted : OnboardingEvent()
         object GoBackToStepWelcome : OnboardingEvent()
@@ -41,6 +42,7 @@ class OnboardingStateContract {
         object NavigateToStepUserPin : UserOnboardingSteps()
         object NavigateToStepUserPinConfirmation : UserOnboardingSteps()
         object NavigateToUsersProfile : UserOnboardingSteps()
+        object ExitApp : UserOnboardingSteps()
     }
 
     sealed class UserData {
