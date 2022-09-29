@@ -43,9 +43,6 @@ object Libs {
 
     const val hiltAndroidLibrary = "com.google.dagger:hilt-android:${Versions.hilt_version}"
 
-    const val hiltAndroidTestingLibrary = "com.google.dagger:hilt-android-compiler:${Versions.hilt_version}"
-    const val hiltTestingLibrary = "com.google.dagger:hilt-android-testing:${Versions.hilt_version}"
-
     const val hiltFragmentNavigationLibrary = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_fragment_nav}"
 
     const val hiltKaptCompilerLibrary =
