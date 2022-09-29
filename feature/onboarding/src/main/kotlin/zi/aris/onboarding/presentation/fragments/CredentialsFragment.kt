@@ -132,7 +132,7 @@ class CredentialsFragment : Fragment(layout.credentials_fragment) {
     private fun renderUserCredentials(userCredentials: OnboardingStateContract.UserData) {
         when (userCredentials) {
             is OnboardingStateContract.UserData.UserError -> {
-                /*todo display error*/
+                Toast.makeText(activity, userCredentials.message, Toast.LENGTH_LONG).show()
             }
             is OnboardingStateContract.UserData.UserCredentials -> {
                 email.text = getInstance().newEditable(userCredentials.email)
