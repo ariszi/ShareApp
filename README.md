@@ -14,7 +14,9 @@ on their changes, and it will create a state from the combination of those react
 the projects' requirements.
 (This approach in bigger projects might be a bottleneck since the combine function can take up to 5 items. <-- Debatable)
 
-# Libs used
+# Build instructions
+You might need to download Android Tiramisu from SDK manager if you get a message for Android 33 issues.
+Sync gradle files and restart your studio.
 
 # Implementation notes
  The priorities on this project are given according to the specs guidelines and personal preference.
