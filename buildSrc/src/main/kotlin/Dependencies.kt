@@ -64,8 +64,6 @@ object Libs {
 
     const val androidxTestCoreLibrary = "androidx.test:core:${Versions.androidx_test_version}"
 
-    const val androidxTestExtLibrary = "androidx.test.ext:junit:${Versions.androidx_test_version}"
-
     const val dataStoreAndroidLibrary = "androidx.datastore:datastore-preferences:${Versions.datastore}"
 
     const val composeMaterialLibrary = "androidx.compose.material:material:${Versions.compose_material}"

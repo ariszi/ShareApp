@@ -29,5 +29,4 @@ dependencies{
     testImplementation(Libs.jUnitLibrary)
     androidTestImplementation(Libs.androidxTestRunnerLibrary)
     androidTestImplementation(Libs.androidxTestCoreLibrary)
-    androidTestImplementation(Libs.androidxTestExtLibrary)
 }
