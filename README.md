@@ -1,7 +1,7 @@
 
 User on boarding flow 
 ==================================
-In this documentation i m going to mentions some of the architectures, frameworks, librarys, conventions, etc that
+In this documentation i m going to mentions some of the architectures, frameworks, libraries, conventions, etc that
 i m going to use in order to complete this project.
 
 # Commit convention Overview
