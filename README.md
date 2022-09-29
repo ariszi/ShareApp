@@ -21,4 +21,17 @@ the projects' requirements.
  Unfortunately the time is not unlimited in order to sharpen all edges so some things like code styles
  or forgotten/unused code/libs here and there might exist.
 
+# Final notes
+Things for future improvement. (Ordered by priority)
+ - Optimise dependencies in modules
+ - Convention plugin
+ - TOML
+ - More tests (2 tests were created as indication and example of other similar classes)
+ - UI tests
+ - Compose
+ - Compose nav (this would make my life easier on this implementation)
+ - Fresh up the UI 
+ - Animations
+ - Code analysis tool
+
 
