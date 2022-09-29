@@ -28,7 +28,7 @@ class UserProfileViewModelTest {
     }
 
     @Test
-    fun `when user lands on the profile screen , then update UI with their info`() =
+    fun `when user lands on the profile screen, then update UI with their info`() =
         runTestWithDispatcher {
             viewModelMock = UserProfileViewModel(savedStateMock, userProfileUsecaseMock)
 
