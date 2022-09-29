@@ -18,16 +18,16 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
 
     companion object {
 
-        private val USER_EMAIL = stringPreferencesKey("user_email")
-        private val USER_PASSWORD = stringPreferencesKey("user_password")
-        private val USER_FIRST_NAME = stringPreferencesKey("user_first_name")
-        private val USER_LAST_NAME = stringPreferencesKey("user_last_name")
-        private val USER_TELEPHONE = stringPreferencesKey("user_telephone")
-        private val USER_PIN = stringPreferencesKey("user_pin")
-        private val USER_PIN_CONFIRMED = booleanPreferencesKey("user_pin_confirmed")
+        internal val USER_EMAIL = stringPreferencesKey("user_email")
+        internal val USER_PASSWORD = stringPreferencesKey("user_password")
+        internal val USER_FIRST_NAME = stringPreferencesKey("user_first_name")
+        internal val USER_LAST_NAME = stringPreferencesKey("user_last_name")
+        internal val USER_TELEPHONE = stringPreferencesKey("user_telephone")
+        internal val USER_PIN = stringPreferencesKey("user_pin")
+        internal val USER_PIN_CONFIRMED = booleanPreferencesKey("user_pin_confirmed")
 
-        private const val USER_NOT_CONFIRMED = "The pin you have entered doesn't match with your previous input"
-        private const val PIN_NOT_VALID = "Pin is not valid. Please try again"
+        internal const val USER_NOT_CONFIRMED = "The pin you have entered doesn't match with your previous input"
+        internal const val PIN_NOT_VALID = "Pin is not valid. Please try again"
 
     }
 

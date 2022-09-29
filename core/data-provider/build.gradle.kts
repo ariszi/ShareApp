@@ -9,4 +9,8 @@ dependencies {
     implementation(Libs.hiltAndroidLibrary)
     kapt(Libs.hiltKaptCompilerLibrary)
     implementation(Libs.injectAssistedAnnotationDaggerLibrary)
+    api(Libs.mockkLibrary)
+    testImplementation(Libs.coroutinesTestLibrary)
+    testImplementation(Libs.hiltTestingLibrary)
+    testAnnotationProcessor(Libs.hiltAndroidTestingLibrary)
 }

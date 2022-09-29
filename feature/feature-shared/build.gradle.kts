@@ -8,5 +8,6 @@ dependencies {
     api(Libs.dataBindingLibrary)
     api(Libs.fragmentKTXLibrary)
     api(Libs.mockkLibrary)
+    testImplementation(Libs.coroutinesTestLibrary)
 
 }
