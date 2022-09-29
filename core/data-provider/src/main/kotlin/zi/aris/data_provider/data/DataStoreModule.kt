@@ -18,9 +18,7 @@ import javax.inject.Singleton
 @Module
 class DataStoreModule {
 
-
     private val USER_DATA = "user_data"
-
 
     @Singleton
     @Provides
