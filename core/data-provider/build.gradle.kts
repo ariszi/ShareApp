@@ -10,5 +10,5 @@ dependencies {
     kapt(Libs.hiltKaptCompilerLibrary)
     implementation(Libs.injectAssistedAnnotationDaggerLibrary)
     api(Libs.mockkLibrary)
-    testImplementation(Libs.coroutinesTestLibrary)
+    api(Libs.coroutinesTestLibrary)
 }

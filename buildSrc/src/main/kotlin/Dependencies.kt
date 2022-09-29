@@ -84,6 +84,14 @@ object Libs {
 
     const val coroutinesTestLibrary = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 
+    const val turbineTestLibrary = "app.cash.turbine:turbine:${Versions.turbine}"
+
+    const val kotestRunnerLibrary = "io.kotest:kotest-runner-junit5:${Versions.kotest}"
+
+    const val kotestAssertionsLibrary = "io.kotest:kotest-assertions-core:${Versions.kotest}"
+
+    const val kotestPropertyLibrary = "io.kotest:kotest-property:${Versions.kotest}"
+
 }
 
 object Plugin {
@@ -144,6 +152,8 @@ object Versions {
     const val javapoet = "1.13.0"
     const val compose = "1.2.1"
     const val mockk = "1.13.2"
+    const val turbine = "0.11.0"
+    const val kotest = "5.4.2"
 
 }
 
