@@ -4,12 +4,14 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.MutablePreferences
 import androidx.datastore.preferences.core.Preferences
 import io.mockk.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import zi.aris.data_provider.data.UserRepository
 import zi.aris.data_provider.data.UserRepository.Companion.USER_EMAIL
 import zi.aris.data_provider.data.UserRepository.Companion.USER_PASSWORD
 
+@ExperimentalCoroutinesApi
 internal class UserDataProviderTest {
 
 
