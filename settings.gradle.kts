@@ -9,7 +9,6 @@ rootProject.name = "User Onboarding"
 include(":app")
 include(":core:design-system")
 include(":core:ui")
-include(":core:testing")
 include(":core:data-provider")
 include(":feature:onboarding")
 include(":feature:pin")

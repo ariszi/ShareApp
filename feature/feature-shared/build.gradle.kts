@@ -7,5 +7,6 @@ dependencies {
     api(project(Module.coreDatasource))
     api(Libs.dataBindingLibrary)
     api(Libs.fragmentKTXLibrary)
+    api(Libs.mockkLibrary)
 
 }

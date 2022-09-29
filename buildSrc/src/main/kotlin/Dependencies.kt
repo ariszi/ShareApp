@@ -80,6 +80,8 @@ object Libs {
 
     const val materialLibrary = "com.google.android.material:material:${Versions.material}"
 
+    const val mockkLibrary = "io.mockk:mockk:${Versions.mockk}"
+
 }
 
 object Plugin {
@@ -139,6 +141,7 @@ object Versions {
     const val compose_compiler = "1.3.1"
     const val javapoet = "1.13.0"
     const val compose = "1.2.1"
+    const val mockk = "1.13.2"
 
 }
 
