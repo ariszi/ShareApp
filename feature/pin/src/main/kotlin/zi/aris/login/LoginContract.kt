@@ -2,6 +2,7 @@ package zi.aris.login
 
 import zi.aris.ui.base_contracts.IntentAction
 import zi.aris.ui.base_contracts.State
+import java.io.Serializable
 
 class LoginContract {
     sealed class UserLoginEvent : IntentAction {
@@ -16,7 +17,7 @@ class LoginContract {
         val displayUserData: UserData = UserData.Idle
     ) : State
 
-    sealed class UserData {
+    sealed class UserData : Serializable {
         object Idle : UserData()
         data class UserError(val message: String) : UserData()
         object UserIsValid : UserData()

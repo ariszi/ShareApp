@@ -2,6 +2,7 @@ package zi.aris.onboarding.presentation.state
 
 import zi.aris.ui.base_contracts.IntentAction
 import zi.aris.ui.base_contracts.State
+import java.io.Serializable
 
 class OnboardingStateContract {
 
@@ -33,7 +34,7 @@ class OnboardingStateContract {
         val displayUserData: UserData = UserData.Idle,
     ) : State
 
-    sealed class UserOnboardingSteps {
+    sealed class UserOnboardingSteps: Serializable {
         object Idle : UserOnboardingSteps()
         object NavigateToStepTC : UserOnboardingSteps()
         object NavigateToStepWelcome : UserOnboardingSteps()

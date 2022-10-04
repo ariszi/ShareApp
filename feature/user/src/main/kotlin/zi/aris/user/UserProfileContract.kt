@@ -2,6 +2,7 @@ package zi.aris.user
 
 import zi.aris.ui.base_contracts.IntentAction
 import zi.aris.ui.base_contracts.State
+import java.io.Serializable
 
 class UserProfileContract {
 
@@ -17,7 +18,7 @@ class UserProfileContract {
         val displayUserData: UserData = UserData.Idle
     ) : State
 
-    sealed class UserNavigation {
+    sealed class UserNavigation: Serializable {
         object Idle : UserNavigation()
         object NavigateToOnboarding : UserNavigation()
         object ExitApp : UserNavigation()
