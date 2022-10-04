@@ -83,7 +83,7 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
         dataStore.edit { it.remove(USER_PIN) }
     }
 
-    override suspend fun usersCredentials(): Flow<Result<User>> {
+    override fun usersCredentials(): Flow<Result<User>> {
         return dataStore.data.map { preferences ->
             Result.Success(User(email = preferences[USER_EMAIL] ?: "", password = preferences[USER_EMAIL] ?: ""))
         }.catch { cause: Throwable -> cause.message?.let { ErrorWithMessage(it) } ?: GenericError }
@@ -93,7 +93,7 @@ class UserRepository @Inject constructor(private val dataStore: DataStore<Prefer
         return dataStore.data.first()[USER_PIN_CONFIRMED] ?: false
     }
 
-    override suspend fun usersInfo(): Flow<Result<User>> {
+    override fun usersInfo(): Flow<Result<User>> {
         return dataStore.data.map { preferences ->
             Result.Success(
                 User(

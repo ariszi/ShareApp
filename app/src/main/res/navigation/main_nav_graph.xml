@@ -4,6 +4,18 @@
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/mainFragment">
 
+    <action android:id="@+id/action_to_pin_nav_graph"
+        app:destination="@id/pin_nav_graph"/>
+
+    <action android:id="@+id/action_to_profile_nav_graph"
+        app:destination="@id/profile_nav_graph"
+        app:popUpTo="@id/main_nav_graph"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true"/>
+
+    <action android:id="@+id/action_to_onboarding_nav_graph"
+        app:destination="@id/onboarding_nav_graph"/>
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="zi.aris.presentation.MainFragment"

@@ -4,12 +4,10 @@
     android:id="@+id/pin_nav_graph"
     app:startDestination="@id/pinLoginFragment">
 
-
     <fragment
         android:id="@+id/pinLoginFragment"
         android:name="zi.aris.login.PinLoginFragment"
         android:label="pin_login_fragment">
     </fragment>
-
 
 </navigation>

@@ -32,4 +32,12 @@ class NavigatorModule {
     fun provideOnboardingRouterModule(@ActivityContext context: Context): OnboardingRouter {
         return Navigator(context)
     }
+
+    @ActivityScoped
+    @Provides
+    fun provideMainRouterModule(@ActivityContext context: Context): MainRouter {
+        return Navigator(context)
+    }
+
+
 }

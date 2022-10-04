@@ -4,17 +4,10 @@
     android:id="@+id/profile_nav_graph"
     app:startDestination="@id/userProfileFragment">
 
-
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="zi.aris.user.UserFragment"
         android:label="user_profile_fragment">
-        <action
-            android:id="@+id/action_profileFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/userProfileFragment"
-            app:popUpToInclusive="true" />
     </fragment>
-
 
 </navigation>
