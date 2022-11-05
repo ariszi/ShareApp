@@ -1,9 +1,8 @@
 plugins {
-    id("com.android.application")
+    id("shareapp.android.application")
     id("androidx.navigation.safeargs")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
-    kotlin("android")
 }
 
 android {
@@ -62,18 +61,18 @@ hilt {
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Libs.injectAssistedAnnotationDaggerLibrary)
-    implementation(Libs.appCompactLibrary)
-    implementation(Libs.coreKTXLibrary)
-    implementation(Libs.vmSaveStateLibrary)
-    implementation(Libs.lifecycleRuntimeKTXLibrary)
-    implementation(Libs.jsrLibrary)
-    implementation(Libs.kotlinxCoroutinesCoreLibrary)
-    implementation(Libs.kotlinxCoroutinesAndroidLibrary)
-    implementation(Libs.constraintLayoutLibrary)
-    implementation(Libs.recycleViewLibrary)
-    implementation(Libs.hiltAndroidLibrary)
-    implementation(Libs.hiltFragmentNavigationLibrary)
+    implementation(Library.injectAssistedAnnotationDaggerLibrary)
+    implementation(Library.appCompactLibrary)
+    implementation(Library.coreKTXLibrary)
+    implementation(Library.vmSaveStateLibrary)
+    implementation(Library.lifecycleRuntimeKTXLibrary)
+    implementation(Library.jsrLibrary)
+    implementation(Library.kotlinxCoroutinesCoreLibrary)
+    implementation(Library.kotlinxCoroutinesAndroidLibrary)
+    implementation(Library.constraintLayoutLibrary)
+    implementation(Library.recycleViewLibrary)
+    implementation(Library.hiltAndroidLibrary)
+    implementation(Library.hiltFragmentNavigationLibrary)
 
     implementation(project(Module.featureOnboarding))
     implementation(project(Module.featurePinLogin))
@@ -81,9 +80,9 @@ dependencies {
     implementation(project(Module.coreUi))
     implementation(project(Module.coreDatasource))
 
-    kapt(Libs.hiltKaptCompilerLibrary)
-    testImplementation(Libs.junitJupiterLibrary)
-    testRuntimeOnly(Libs.junitJupiterEngineLibrary)
+    kapt(Library.hiltKaptCompilerLibrary)
+    testImplementation(Library.junitJupiterLibrary)
+    testRuntimeOnly(Library.junitJupiterEngineLibrary)
 
 
 }

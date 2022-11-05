@@ -1,14 +1,17 @@
 plugins {
-    id("android-common-build")
+    id("shareapp.android.library")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
 
 dependencies {
-    implementation(Libs.dataStoreAndroidLibrary)
-    implementation(Libs.hiltAndroidLibrary)
-    kapt(Libs.hiltKaptCompilerLibrary)
-    implementation(Libs.injectAssistedAnnotationDaggerLibrary)
-    api(Libs.mockkLibrary)
-    api(Libs.coroutinesTestLibrary)
+    implementation(Library.dataStoreAndroidLibrary)
+    implementation(Library.hiltAndroidLibrary)
+    kapt(Library.hiltKaptCompilerLibrary)
+    implementation(Library.injectAssistedAnnotationDaggerLibrary)
+    api(Library.mockkLibrary)
+    api(Library.coroutinesTestLibrary)
+}
+android {
+    namespace = "zi.aris.data_provider"
 }

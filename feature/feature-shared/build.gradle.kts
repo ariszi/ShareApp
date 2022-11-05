@@ -1,5 +1,5 @@
 plugins {
-    id("android-common-build")
+    id("shareapp.android.library")
 }
 
 tasks.withType<Test> {
@@ -9,13 +9,16 @@ tasks.withType<Test> {
 dependencies {
     api(project(Module.coreUi))
     api(project(Module.coreDatasource))
-    api(Libs.dataBindingLibrary)
-    api(Libs.fragmentKTXLibrary)
-    api(Libs.mockkLibrary)
-    api(Libs.kotlinxCoroutinesCoreLibrary)
-    api(Libs.coroutinesTestLibrary)
-    api(Libs.turbineTestLibrary)
-    api(Libs.kotestRunnerLibrary)
-    api(Libs.kotestAssertionsLibrary)
-    api(Libs.kotestPropertyLibrary)
+    api(Library.dataBindingLibrary)
+    api(Library.fragmentKTXLibrary)
+    api(Library.mockkLibrary)
+    api(Library.kotlinxCoroutinesCoreLibrary)
+    api(Library.coroutinesTestLibrary)
+    api(Library.turbineTestLibrary)
+    api(Library.kotestRunnerLibrary)
+    api(Library.kotestAssertionsLibrary)
+    api(Library.kotestPropertyLibrary)
+}
+android {
+    namespace = "zi.aris.feature_shared"
 }

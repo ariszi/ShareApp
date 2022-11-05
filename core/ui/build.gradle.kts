@@ -1,5 +1,5 @@
 plugins {
-    id("android-common-build")
+    id("shareapp.android.library")
     id("androidx.navigation.safeargs")
 }
 
@@ -12,18 +12,19 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.compose_compiler
     }
+    namespace = "zi.aris.ui"
 }
 
 dependencies {
-    api(Libs.materialComponentsLibrary)
-    api(Libs.composeMaterialLibrary)
-    api(Libs.composeUiLibrary)
-    api(Libs.composeToolingLibrary)
-    api(Libs.composeFoundationLibrary)
-    api(Libs.composeCompilerLibrary)
-    api(Libs.navigationLibrary)
-    api(Libs.navigationKTXLibrary)
-    api(Libs.navigationComposeLibrary)
+    api(Library.materialComponentsLibrary)
+    api(Library.composeMaterialLibrary)
+    api(Library.composeUiLibrary)
+    api(Library.composeToolingLibrary)
+    api(Library.composeFoundationLibrary)
+    api(Library.composeCompilerLibrary)
+    api(Library.navigationLibrary)
+    api(Library.navigationKTXLibrary)
+    api(Library.navigationComposeLibrary)
 
-    implementation(Libs.materialLibrary)
+    implementation(Library.materialLibrary)
 }
