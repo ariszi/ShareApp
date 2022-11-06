@@ -7,6 +7,7 @@ plugins {
 dependencies {
     implementation(Library.dataStoreAndroidLibrary)
     implementation(Library.hiltAndroidLibrary)
+    androidTestImplementation("org.junit.jupiter:junit-jupiter")
     kapt(Library.hiltKaptCompilerLibrary)
     implementation(Library.injectAssistedAnnotationDaggerLibrary)
     api(Library.mockkLibrary)

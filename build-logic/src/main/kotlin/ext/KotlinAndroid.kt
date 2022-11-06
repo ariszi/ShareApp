@@ -20,7 +20,9 @@ import AppConfig
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.ExtensionAware
+import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.provideDelegate
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
@@ -30,12 +32,15 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
+
+    val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
     commonExtension.apply {
-        compileSdk = AppConfig.compileSdk
-        buildToolsVersion = AppConfig.buildToolsVersion
+        compileSdk = libs.findVersion("compile_sdk").get().toString().toInt()
+        buildToolsVersion = libs.findVersion("build_tools").get().toString()
 
         defaultConfig {
-            minSdk = AppConfig.minSdk
+            minSdk = libs.findVersion("min_sdk").get().toString().toInt()
             testInstrumentationRunner = AppConfig.androidTestInstrumentation
         }
 

@@ -108,12 +108,8 @@ object Plugin {
 
 object AppConfig {
 
-    const val compileSdk = 33
-    const val minSdk = 26
-    const val targetSdk = 33
     const val versionCode = 1
     const val versionName = "1.0"
-    const val buildToolsVersion = "31.0.0"
     const val appId = "zi.aris.useronboarding"
 
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
@@ -161,9 +157,9 @@ object Module {
     const val featureShared = ":feature:feature-shared"
     const val featureOnboarding = ":feature:onboarding"
     const val featurePinLogin = ":feature:pin"
-    const val featureMainScreen = ":feature:user"
+    const val featureMainScreen = ":feature:user-profile"
     const val coreDesignSystem = ":core:design-system"
-    const val coreDatasource = ":core:data-provider"
+    const val coreDatasource = ":feature:user-repository"
     const val coreUi = ":core:ui"
     const val testTesting = "core:testing"
 

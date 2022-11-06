@@ -7,17 +7,11 @@ plugins {
 
 android {
     namespace = AppConfig.appId
-    compileSdk = AppConfig.compileSdk
-    buildToolsVersion = AppConfig.buildToolsVersion
 
     defaultConfig {
         applicationId = AppConfig.appId
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
-
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
     }
 
     buildFeatures {
@@ -39,14 +33,6 @@ android {
                 AppConfig.proguardConsumerRules
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    packagingOptions {
-        resources.excludes.add("META-INF/**")
-        resources.excludes.add("**/attach_hotspot_windows.dll")
     }
 }
 
