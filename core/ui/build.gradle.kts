@@ -16,15 +16,13 @@ android {
 }
 
 dependencies {
-    api(Library.materialComponentsLibrary)
-    api(Library.composeMaterialLibrary)
-    api(Library.composeUiLibrary)
-    api(Library.composeToolingLibrary)
-    api(Library.composeFoundationLibrary)
-    api(Library.composeCompilerLibrary)
-    api(Library.navigationLibrary)
-    api(Library.navigationKTXLibrary)
-    api(Library.navigationComposeLibrary)
-
-    implementation(Library.materialLibrary)
+    api(libs.android.material)
+    api(libs.compose.material)
+    api(libs.compose.ui)
+    api(libs.compose.ui.tooling)
+    api(libs.compose.foundation)
+    api(libs.compose.compiler)
+    api(libs.navigation.fragment.ktx)
+    api(libs.navigation.ui)
+    api(libs.navigation.compose)
 }

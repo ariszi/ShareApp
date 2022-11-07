@@ -15,13 +15,17 @@ java {
 
 gradlePlugin {
     plugins {
-        register("androidApplication") {
+        register("applicationCP") {
             id = "shareapp.android.application"
-            implementationClass = "AndroidApplicationConventionPlugin"
+            implementationClass = "ApplicationConventionPlugin"
         }
-        register("androidLibrary") {
+        register("androidLibraryCP") {
             id = "shareapp.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("appDICP") {
+            id = "shareapp.di"
+            implementationClass = "DIConventionPlugin"
         }
     }
 }

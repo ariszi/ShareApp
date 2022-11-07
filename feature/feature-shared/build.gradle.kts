@@ -8,16 +8,16 @@ tasks.withType<Test> {
 
 dependencies {
     api(project(Module.coreUi))
-    api(project(Module.coreDatasource))
-    api(Library.dataBindingLibrary)
-    api(Library.fragmentKTXLibrary)
-    api(Library.mockkLibrary)
-    api(Library.kotlinxCoroutinesCoreLibrary)
-    api(Library.coroutinesTestLibrary)
-    api(Library.turbineTestLibrary)
-    api(Library.kotestRunnerLibrary)
-    api(Library.kotestAssertionsLibrary)
-    api(Library.kotestPropertyLibrary)
+    api(project(Module.userRepository))
+    api(libs.databinding)
+    api(libs.fragment.ktx)
+    api(libs.coroutines.core)
+    api(libs.mockk)
+    api(libs.kotest.property)
+    api(libs.coroutines.testing)
+    api(libs.turbine)
+    api(libs.kotest.runner.junit5)
+    api(libs.kotest.assertions.core)
 }
 android {
     namespace = "zi.aris.feature_shared"

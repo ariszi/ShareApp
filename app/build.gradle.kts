@@ -1,8 +1,7 @@
 plugins {
     id("shareapp.android.application")
     id("androidx.navigation.safeargs")
-    id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id("shareapp.di")
 }
 
 android {
@@ -40,35 +39,22 @@ kapt {
     correctErrorTypes = true
 }
 
-hilt {
-    enableAggregatingTask = true
-}
-
 dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Library.injectAssistedAnnotationDaggerLibrary)
-    implementation(Library.appCompactLibrary)
-    implementation(Library.coreKTXLibrary)
-    implementation(Library.vmSaveStateLibrary)
-    implementation(Library.lifecycleRuntimeKTXLibrary)
-    implementation(Library.jsrLibrary)
-    implementation(Library.kotlinxCoroutinesCoreLibrary)
-    implementation(Library.kotlinxCoroutinesAndroidLibrary)
-    implementation(Library.constraintLayoutLibrary)
-    implementation(Library.recycleViewLibrary)
-    implementation(Library.hiltAndroidLibrary)
-    implementation(Library.hiltFragmentNavigationLibrary)
+    implementation(libs.app.compat)
+    implementation(libs.core.ktx)
+    implementation(libs.saved.state)
+    implementation(libs.lifecycle)
+    implementation(libs.jsr250)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.constraint.layout)
 
     implementation(project(Module.featureOnboarding))
     implementation(project(Module.featurePinLogin))
     implementation(project(Module.featureMainScreen))
     implementation(project(Module.coreUi))
-    implementation(project(Module.coreDatasource))
-
-    kapt(Library.hiltKaptCompilerLibrary)
-    testImplementation(Library.junitJupiterLibrary)
-    testRuntimeOnly(Library.junitJupiterEngineLibrary)
-
+    implementation(project(Module.userRepository))
 
 }

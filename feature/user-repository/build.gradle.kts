@@ -1,17 +1,12 @@
 plugins {
     id("shareapp.android.library")
-    id("dagger.hilt.android.plugin")
-    kotlin("kapt")
+    id("shareapp.di")
 }
 
 dependencies {
-    implementation(Library.dataStoreAndroidLibrary)
-    implementation(Library.hiltAndroidLibrary)
-    androidTestImplementation("org.junit.jupiter:junit-jupiter")
-    kapt(Library.hiltKaptCompilerLibrary)
-    implementation(Library.injectAssistedAnnotationDaggerLibrary)
-    api(Library.mockkLibrary)
-    api(Library.coroutinesTestLibrary)
+    implementation(libs.datastore.preferences)
+    api(libs.mockk)
+    api(libs.coroutines.testing)
 }
 android {
     namespace = "zi.aris.data_provider"
