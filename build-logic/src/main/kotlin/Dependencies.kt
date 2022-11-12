@@ -20,7 +20,7 @@ object Module {
     const val featurePinLogin = ":feature:pin"
     const val featureMainScreen = ":feature:user-profile"
     const val coreDesignSystem = ":core:design-system"
-    const val userRepository = ":feature:user-repository"
+    const val userRepository = ":core:user-data"
     const val coreUi = ":core:ui"
     const val testTesting = "core:testing"
 

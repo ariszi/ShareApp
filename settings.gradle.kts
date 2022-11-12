@@ -17,7 +17,7 @@ rootProject.name = "Share"
 include(":app")
 include(":core:design-system")
 include(":core:ui")
-include(":feature:user-repository")
+include(":core:user-data")
 include(":feature:onboarding")
 include(":feature:pin")
 include(":feature:user-profile")
