@@ -10,7 +10,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose_compiler
+        kotlinCompilerExtensionVersion = AppConfig.compose_compiler
     }
     namespace = "zi.aris.ui"
 }

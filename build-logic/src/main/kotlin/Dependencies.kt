@@ -8,11 +8,6 @@ object AppConfig {
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
     const val proguardConsumerRules = "consumer-rules.pro"
     const val proguardDefaultFile = "proguard-android-optimize.txt"
-
-}
-
-object Versions {
-
     const val compose_compiler = "1.3.2"
 
 }
